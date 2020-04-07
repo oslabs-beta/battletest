@@ -1,0 +1,40 @@
+{
+  "name": "battletest",
+  "version": "0.1.0",
+  "description": "Backend testing generator",
+  "main": "index.js",
+  "bin": {
+    "battletest": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "battletest": "battletest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oslabs-beta/battletest.git"
+  },
+  "keywords": [
+    "test",
+    "backend",
+    "http",
+    "supertest",
+    "chai"
+  ],
+  "author": "Binta Kinteh @BintaKinteh, Duygu Yigitsoy @dyigitsoy, Kevin Luo @LuoKevin, Soobin Kim @soobinkim1, Yula Ko @yulako",
+  "bugs": {
+    "url": "https://github.com/oslabs-beta/battletest/issues"
+  },
+  "homepage": "https://github.com/oslabs-beta/battletest#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jsdoc": "^3.6.3",
+    "mocha": "^7.1.1"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "supertest": "^4.0.2"
+  }
+}
