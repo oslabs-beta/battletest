@@ -1,22 +1,19 @@
 # Battletest
 
 A CLI module for npm that auto-generates tests based on user specified parameters.
+Uses Chai, Mocha and Supertest.
 
 ## Installation
 
-`npm install battletest`
+`npm install battletest -g`
 
-Install with the -g flag for a global installation
+Install with the -save-dev flag in place of the -g flag for a local per project basis
 
 ## Intializing Battletest in your project
 
-`npx battletest init`
-
-or
-
 `battletest init`
 
-if you installed the module globally
+If you installed the module globally. (For local installs, run using npx battletest init)
 
 ## Running Battletest
 
@@ -50,8 +47,7 @@ Category 3: Test cases with endpoints/functions to test
                         rule: 'choice', //rule specified by battletest on how to generate the request
                         key: 'data', //property name to attach to the section
                         payload: ['val1','val2'] //value or values to assign to the key
-                        payload_median_size: 2 //if set or range rule is selected, size of the assigned value
-                        payload_default: [['val1']], //default values to include in the payload
+                        payload_default: [['val1']], //default values to always include as a test scenario
                         payload_default_only: true //if set, then only the default value will be tested
 
                     }

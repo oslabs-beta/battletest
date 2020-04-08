@@ -16,6 +16,7 @@ describe('/stockdata', () => {
       .query({ file_type: 'csv' })
       .send({ ticker: 'GOOG', columns: ['close'] })
       .expect(200));
+
     // median # columns
     it(' {ticker: GOOG, columns: [‘close’, ‘volume’], start: "2020-03-03", end: "2020-04-03"}', () => request(server)
       .get('/stockdata')

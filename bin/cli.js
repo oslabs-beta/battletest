@@ -2,12 +2,15 @@
 // console.log('hello world');
 // process.exit();
 
-
+//  process.argv holds the arguments from when we run battletest from the command line
+//  e.g. running $battletest init would result in process.argv having ['/node','/battletest', 'init']
 const args = process.argv.slice(2);
+//  the above line slices the first 2 extra arguments, results in an array of cmds ['init']
 
-let cmd = args._[0] || 'help';
-if (args.version || args.v) { cmd = 'version'; }
-if (args.help || args.h) { cmd = 'help'; }
+// ADD LOGIC TO HANDLE FLAGS (--save, etc.)
+
+const cmd = args[0] || 'help';
+// cmd equals first argument in array, othewise will equal 'help'
 
 switch (cmd) {
   case 'help':
