@@ -1,6 +1,7 @@
 /**
- * @name cmd/help.js
+ * @name help
  * @description Prints a help menu for the battletest node module
+ *
  */
 
 const chalk = require('chalk');
@@ -8,7 +9,8 @@ const battle = require('../../package.json');
 
 const github = battle.repository.url;
 const { homepage } = battle;
-module.exports = () => {
+
+const help = () => {
   const helpTxt = `Usage: battletest <command>
 
 Commands:
@@ -23,3 +25,6 @@ version                 Display current version of Battletest
   console.log(`Github:  ${chalk.blue(github)}`);
   console.log(`Docs:    ${chalk.red(homepage)}`);
 };
+
+
+module.exports = help;
