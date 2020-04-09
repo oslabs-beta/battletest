@@ -25,6 +25,9 @@ switch (cmd) {
   case 'generate':
     require('./cmds/generate')();
     break;
+  case 'start':
+    require('./cmds/start')();
+    break;
   default:
     console.error(`"${cmd}" is not a valid command`);
     break;
