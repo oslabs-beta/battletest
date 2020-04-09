@@ -9,13 +9,12 @@ module.exports = {
     showAllResponses: false,
   },
   // Category 3:
-  functionsForTesting: [
+  routesForTesting: [
     // vector-parser will parse below into arrays, on which we'll run cached recursion (or is a different algorithm better?)
     {
       route: '/stockdata',
       request_type: 'GET',
-      vectors: [
-        {
+      vectors: [{
           section: 'body',
           rule: 'choose_one', // if "unique", will pick random one from each payload
           key: 'ticker',
@@ -27,7 +26,9 @@ module.exports = {
           rule: 'choose_many', // if "set", will pick a set of one, median, zero
           key: 'columns',
           payload: ['close', 'open', 'max', 'min', 'volume'],
-          payload_default: [['close', 'volume']], // those listed here will always be included
+          payload_default: [
+            ['close', 'volume']
+          ], // those listed here will always be included
           payload_default_only: true, // if true, only "default" will be tested
         },
         {
@@ -35,10 +36,12 @@ module.exports = {
           rule: 'choose_range', // if "range", will create ranges with smallest possible, median, and biggest possible
           key: ['start', 'end'],
           payload: [
-            ['1970-01-01', Date.parse(new Date())],
-            ['1970-01-02', Date.parse(new Date())],
+            ['1970-01-01', '2020-04-10'],
+            ['1970-01-02', '2020-04-10'],
           ],
-          payload_default: [['2020-01-01', '2020-03-03']],
+          payload_default: [
+            ['2020-01-01', '2020-03-03']
+          ],
         },
         {
           section: 'query',

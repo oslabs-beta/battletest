@@ -27,6 +27,10 @@ switch (cmd) {
       require('./cmds/version')();
     break;
   case 'init':
+    if (args.length > 1) {
+      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`)
+    } 
+    else {
     require('./cmds/init')();
     break;
   case 'generate':
