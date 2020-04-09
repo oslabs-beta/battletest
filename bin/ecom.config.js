@@ -4,7 +4,8 @@ module.exports = {
   PORT: 8000, // the port the server is using
   model_location: '../model.js', // import model form server/database folder
 
-  functionForTesting: [ // specify all the parameter we need to generate the test file
+  functionsForTesting: [
+    // specify all the parameter we need to generate the test file
     {
       route: '/products', // endpoint that we will be testing
       method: 'GET', // request method
@@ -28,8 +29,14 @@ module.exports = {
           section: 'body',
           rule: 'choose_range',
           key: ['min_price', 'max_price'],
-          payload: [[0, 10], [100, 1000]],
-          payload_default: [[0, 100], [10, 1000]], // p_d_o === false [10, 100], [0, 1000], and the payload default
+          payload: [
+            [0, 10],
+            [100, 1000],
+          ],
+          payload_default: [
+            [0, 100],
+            [10, 1000],
+          ], // p_d_o === false [10, 100], [0, 1000], and the payload default
         },
         {
           section: 'body',

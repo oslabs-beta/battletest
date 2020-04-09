@@ -5,11 +5,15 @@ const config = require('../../default.config.js');
 const { server_location, PORT, model_location, functionsForTesting } = config;
 
 const testTemplate = `
-
+  const request = require('supertest');
+  const chai = require('chai');
+  const expect = chai.expect;
+  const server_location = 'http://localhost:${PORT}';
+  
   describe('/stockdata', () => {
 
     describe('${functionsForTesting[0].request_type}', () => {
-      it('body: {${functionsForTesting[0].vectors[0].section}: ${functionsForTesting[0].vectors[0].key}: ${functionsForTesting[0].vectors[0].payload_default}}', (done) => {
+      it('${functionsForTesting[0].vectors[0].section}: {${functionsForTesting[0].vectors[0].key}: ${functionsForTesting[0].vectors[0].payload_default}}', (done) => {
         request(server_location)
           .get('${functionsForTesting[0].route}')
           .send({${functionsForTesting[0].vectors[0].key}: '${functionsForTesting[0].vectors[0].payload_default}'})

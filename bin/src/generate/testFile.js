@@ -1,6 +1,12 @@
+const request = require('supertest');
+const chai = require('chai');
+
+const { expect } = chai;
+const server_location = 'http://localhost:8000';
+
 describe('/stockdata', () => {
   describe('GET', () => {
-    it('body: {body: ticker: GOOG}', (done) => {
+    it('body: {ticker: GOOG}', (done) => {
       request(server_location)
         .get('/stockdata')
         .send({ ticker: 'GOOG' })

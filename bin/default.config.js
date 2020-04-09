@@ -4,22 +4,17 @@ module.exports = {
   PORT: 8000,
   model_location: '/server/models/model.js', // access to the database
   // Category 2: providing options to the developer
-  report_setting: { // what user wants to see on the terminal once all tests are run
+  report_setting: {
+    // what user wants to see on the terminal once all tests are run
     showAllResponses: false,
   },
   // Category 3:
-  functionsForTesting: [ // vector-parser will parse below into arrays, on which we'll run cached recursion (or is a different algorithm better?)
+  functionsForTesting: [
+    // vector-parser will parse below into arrays, on which we'll run cached recursion (or is a different algorithm better?)
     {
       route: '/stockdata',
       request_type: 'GET',
       vectors: [
-        {
-          section: 'headers',
-          rule: 'choose_one',
-          key: 'Content-Type',
-          payload: ['text/html; charset=UTF-8', 'multipart/form-data'],
-          payload_default: ['text/html; charset=UTF-8'],
-        },
         {
           section: 'body',
           rule: 'choose_one', // if "unique", will pick random one from each payload
@@ -40,8 +35,8 @@ module.exports = {
           rule: 'choose_range', // if "range", will create ranges with smallest possible, median, and biggest possible
           key: ['start', 'end'],
           payload: [
-            ['1970-01-01', Date.parse(new Date.now())],
-            ['1970-01-02', Date.parse(new Date.now())],
+            ['1970-01-01', Date.parse(new Date())],
+            ['1970-01-02', Date.parse(new Date())],
           ],
           payload_default: [['2020-01-01', '2020-03-03']],
         },
