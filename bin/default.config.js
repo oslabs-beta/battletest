@@ -1,7 +1,7 @@
 module.exports = {
   // Category 1: absolutely needed
   server_location: './server/server.js',
-  PORT: 8000,
+  serverURL: 8000,
   model_location: '/server/models/model.js', // access to the database
   // Category 2: providing options to the developer
   report_setting: {
@@ -13,7 +13,7 @@ module.exports = {
     // vector-parser will parse below into arrays, on which we'll run cached recursion (or is a different algorithm better?)
     {
       route: '/stockdata',
-      request_type: 'GET',
+      method: 'GET',
       vectors: [{
           section: 'body',
           rule: 'choose_one', // if "unique", will pick random one from each payload

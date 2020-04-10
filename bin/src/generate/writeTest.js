@@ -3,78 +3,93 @@
 /* eslint-disable no-multiple-empty-lines */
 const fs = require('fs');
 
-const config = require('../../default.config.js');
-
-const {
-  server_location,
-  PORT,
-  model_location,
-  routesForTesting,
-} = config;
+//const config = require('../../default.config.js');
 
 // SAMPLE: first route in routesForTesting 
-const routeObj = routesForTesting[0];
+//const routeObj = routesForTesting[0];
+const routeObj = {
+      route: '/products', // endpoint that we will be testing
+      method: 'GET', // request method
+      vectors: [{
+          section: 'body', // the part of the request we will our info
+          rule: 'choose_one', // how we are generating our request. if we choose one then for the rest of the test we will use one payload
+          key: 'product_category', // req.body[key] = payload (one element in the array)
+          payload: ['shoes', 'bags', 'belts'],
+          payload_default: ['shoes'],
+      }]
+  }
 
 class TestFile {
-  constructor(routeObj) {
+  constructor(routeObj, serverURL) {
     // an element from functionsForTesting
     this.route = routeObj.route;
     this.method = routeObj.method;
     this.vectors = routeObj.vectors;
+    this.serverURL = serverURL;
+    this.testFileBlock = null;
   }
-  execute() {
+
+  render() {
+    // write ItBlocks
     const itBlocks = [];
-    [ /*all requests that will need to be generated*/ ].forEach((requestDetails) => {
-      const supertestBlock = writeSupertest(requestDetails);
-      const itBlock = writeItTest(supertestBlock, requestDetails);
+    ['it1', 'it2'].forEach((reqObj) => {
+      const supertestBlock = this.writeSupertest(reqObj)
+      const itBlock = this.writeItBlock(supertestBlock);
       itBlocks.push(itBlock);
-    })[ /**all requests */ ].forEach((requestDetails) => {
-      itBlocks.push(new itBlock(requeustDetails))
     })
-
-    return this.writeDescribeBlock(itBlocks)
-  }
-  writeDescribeBlock(itBlocks) {
-    const itBlocksString = ``;
-    for (let i = 0; i < itBlocks.length; i += 1) {
-      itBlocksString += itBlocks[i];
-      itBlocksString += '\n';
-    }
-
-    const template = `
-      describe('${this.route}', () => {
-        ${itBlocksString}
-      }
+    // write describeBlock
+    const describeBlock = this.writeDescribeBlock(itBlocks);
+    // write testFileBlock
+    const testFileBlock = `
+    const request = require('supertest');
+    const serverURL = '${this.serverURL}';
+      ${describeBlock}
     `
-    return template
+    this.testFileBlock = testFileBlock;
   }
-  //  it(' {ticker: GOOG, columns: [‘close’, ‘volume’], start: "2020-03-03", end: "2020-04-03"}', supertestBlock)
 
+  writeDescribeBlock(itBlocks) {
+    // make a single template literal with all itBlocks
+    let itBlocksCombined = ``;
+    for (let i = 0; i < itBlocks.length; i += 1) {
+      itBlocksCombined += itBlocks[i];
+      itBlocksCombined += '\n';
+    }
+    // template for describeBlock
+    const describeBlock = `
+    describe('${this.route} ${this.method}', () => {
+        ${itBlocksCombined}
+    }`
+    return describeBlock;
+  }
 
-  writeItBlock(supertestBlock, requestDetails) {
-    const template = `
+  writeItBlock(supertestBlock) {
+    // template for describeBlock
+    const itBlock = `
       it(${'PLACEHOLDER FOR REQUEST DETAILS'}, (done) => {
         ${supertestBlock}
-      });
-    `
-    return template;
+      });`
+    return itBlock;
   }
 
-  writeSupertest(requestDetails) {
-    const template = `
-      request(server_location)
-        .get('${this.funcObj.route}')
+  writeSupertest(reqObj) {
+    const supertestBlock = `
+      request(serverURL)
+        .${this.method.toLowerCase()}('${this.route}')
         .send('/*TO DO: GENERATED REQUEST BODY TO GO HERE*/'})
         .expect(200)
         .end((err, res) => {
           /* Custom assertions can be inserted here */
           done(err);
     `;
-    return template;
+    // add requestType
+    return supertestBlock;
   }
 }
 
-const testFileString = new TestFile(routeObj);
+const test = new TestFile(routeObj, 'http://localhost:8000');
+test.render()
+console.log(test.testFileBlock);
 
 // const testTemplate = `
 //   const request = require('supertest');

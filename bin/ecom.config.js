@@ -4,14 +4,14 @@
 module.exports = {
   // Category 1: Primary Project Information
   server_location: '../server.js', // server imported form server folder
-  PORT: 8000, // the port the server is using
+  serverURL: 8000, // the port the server is using
   model_location: '../model.js', // import model form server/database folder
 
   routesForTesting: [
     // specify all the parameter we need to generate the test file
     {
       route: '/products', // endpoint that we will be testing
-      request_type: 'GET', // request method
+      method: 'GET', // request method
       vectors: [{
           section: 'body', // the part of the request we will our info
           rule: 'choose_one', // how we are generating our request. if we choose one then for the rest of the test we will use one payload
