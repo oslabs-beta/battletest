@@ -1,23 +1,27 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable semi */
 /* eslint-disable no-multiple-empty-lines */
-const fs = require('fs');
+const fs = require("fs");
 
 //const config = require('../../default.config.js');
 
-// SAMPLE: first route in routesForTesting 
+// SAMPLE: first route in routesForTesting
 //const routeObj = routesForTesting[0];
 const routeObj = {
-      route: '/products', // endpoint that we will be testing
-      method: 'GET', // request method
-      vectors: [{
-          section: 'body', // the part of the request we will our info
-          rule: 'choose_one', // how we are generating our request. if we choose one then for the rest of the test we will use one payload
-          key: 'product_category', // req.body[key] = payload (one element in the array)
-          payload: ['shoes', 'bags', 'belts'],
-          payload_default: ['shoes'],
-      }]
-  }
+  route: "/products", // endpoint that we will be testing
+  method: "GET", // request method
+  vectors: [
+    {
+{
+      section: "body", // the part of the request we will our info
+      rule: "choose_one", // how we are generating our request. if we choose one then for the rest of the test we will use one payload
+      key: "product_category", // req.body[key] = payload (one element in the array)
+     payload: ["shoes", "bags", "belts"],
+      payload_default: ["shoes"]
+    },
+}
+  ],
+};;
 
 class TestFile {
   constructor(routeObj, serverURL) {
@@ -29,14 +33,14 @@ class TestFile {
     this.testFileBlock = null;
   }
 
-  render() {
+  render(reqObjs) {
     // write ItBlocks
     const itBlocks = [];
-    ['it1', 'it2'].forEach((reqObj) => {
-      const supertestBlock = this.writeSupertest(reqObj)
+    reqObjs.forEach(reqObj => {
+      const supertestBlock = this.writeSupertest(reqObj);;
       const itBlock = this.writeItBlock(supertestBlock);
       itBlocks.push(itBlock);
-    })
+    });;
     // write describeBlock
     const describeBlock = this.writeDescribeBlock(itBlocks);
     // write testFileBlock
@@ -44,7 +48,7 @@ class TestFile {
     const request = require('supertest');
     const serverURL = '${this.serverURL}';
       ${describeBlock}
-    `
+    `;;
     this.testFileBlock = testFileBlock;
   }
 
@@ -53,26 +57,28 @@ class TestFile {
     let itBlocksCombined = ``;
     for (let i = 0; i < itBlocks.length; i += 1) {
       itBlocksCombined += itBlocks[i];
-      itBlocksCombined += '\n';
+      itBlocksCombined += "\n";
     }
     // template for describeBlock
     const describeBlock = `
     describe('${this.route} ${this.method}', () => {
         ${itBlocksCombined}
-    }`
+    });`;;
     return describeBlock;
   }
 
   writeItBlock(supertestBlock) {
     // template for describeBlock
     const itBlock = `
-      it(${'PLACEHOLDER FOR REQUEST DETAILS'}, (done) => {
+      it(${"PLACEHOLDER FOR REQUEST DETAILS"}, (done) => {
         ${supertestBlock}
-      });`
+      });`;;
     return itBlock;
   }
 
   writeSupertest(reqObj) {
+    // TO DO: customize supertestBlock based on reqObj details (method, body, params, headers, query)
+    // TO DO: check this will add cookies
     const supertestBlock = `
       request(serverURL)
         .${this.method.toLowerCase()}('${this.route}')
@@ -81,14 +87,14 @@ class TestFile {
         .end((err, res) => {
           /* Custom assertions can be inserted here */
           done(err);
+        });
     `;
-    // add requestType
     return supertestBlock;
   }
 }
 
-const test = new TestFile(routeObj, 'http://localhost:8000');
-test.render()
+const test = new TestFile(routeObj, "http://localhost:8000");
+test.render();;
 console.log(test.testFileBlock);
 
 // const testTemplate = `
@@ -121,3 +127,4 @@ console.log(test.testFileBlock);
 //     if (err) throw err;
 //   },
 // );
+
