@@ -1,7 +1,7 @@
 /**
  * @name bin/cmds/start
- * @description execute "battletest start" by running tests in __battletest__ upon
- * @param {Array.String} testFiles - names of testFiles passed by the user
+ * @description execute "battletest start" by running all or specified test filess in __battletest__ folder
+ * @param {Array.String} [testFiles] - names of testFiles passed by the user
  * @returns {null} undefined
  */
 
@@ -15,6 +15,7 @@ const mochaOptions = require('../src/mochaOptions.js');
 const mocha = new Mocha(mochaOptions); // create a new instance of mocha
 
 const start = (...testFiles) => {
+  // get path of __battletest__
   const testDirectory = path.resolve(process.cwd(), '__battletest__');
 
   if (testFiles.length > 0) {
@@ -30,7 +31,7 @@ const start = (...testFiles) => {
       }
       return acc;
     }, []);
-    // if any testFile is not in testDirectory, return error and stop execution
+    // if any specified testFile is not in testDirectory, return error and stop execution
     if (notInTestDirectory.length > 0) {
       console.error(`battletest: following files are not found in __battletest__: ${notInTestDirectory}.`);
       return;
