@@ -75,12 +75,10 @@ class TestFile {
   render() {
     // TO DO: fix indentations for outputs
     const itBlocks = [];
-    // TO DO: iterate through this.baseScenario and this.variations to write itBlocks
       // generate baseScenario's itBlock
     itBlocks.push('// Base Scenario')
     itBlocks.push(this.writeItBlock(this.baseScenario));
-      // loop through each key in this.variations
-    console.log(this.baseScenario)
+      // loop through each key in this.variation
     Object.keys(this.variations).forEach(section => {
       Object.keys(this.variations[section]).forEach(key => {
         itBlocks.push(`// Scenarios for testing: ${section}.${key}`);

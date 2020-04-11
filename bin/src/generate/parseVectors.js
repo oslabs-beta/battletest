@@ -14,14 +14,23 @@
  *       file_type: 'json' 
  *     } 
  *   }
- * variations = { body:  
- *  { season: [
+ * variations = { 
+ * body:  
+ * { 
+ *  season: [
  *     [ 'summer' ], 
  *     [ 'winter' ], 
  *     [ 'summer', 'winter', 'fall', 'spring' ]
- *   ], 
- *    'r:min_price:max_price': [ [ 10, 1000 ], [ 10, 100 ], [ 0, 1000 ] ] , 
- *    file_type: [ 'csv' ] } } 
+ *    ] , 
+ *  'r:min_price:max_price': [ 
+ *      [ 10, 1000 ], 
+ *      [ 10, 100 ], 
+ *      [ 0, 1000 ] 
+ *    ] , 
+ *   file_type: 
+ *       [ 'csv' ] 
+ *  } 
+ * } 
  */
 
 const _ = require("lodash");
@@ -116,7 +125,7 @@ function parseVectors (vectors) {
         }
       }
       
-      // handle choose_one, choose_many, choose_range, choose_each
+      // handle choose_one, choose_many, choose_each
       else {
         if (vector['payload_default'].length > 0) {
           // populte baseScenario
