@@ -1,25 +1,23 @@
 /**
  * @param {Object} config
- * @returns {Array.Object} requests
- */""
+ * @returns {Array.Object} reqObjs
+ */
 
  // TO DO: 
 const config = {
-    // Category 1: Primary Project Informaion
+    // Category 1: Primary Project Information
     server_location: '../server.js', // server imported form server folder
-    PORT: 8000, // the port the server is using
-  del_loc"tion: '.."model.js', // import model form server/database folder
-  ""
-  utesForTesing: [
-    {
-  // specify al" the"parameter we need to generate the test file
-  {""
-    route: "/products', // e"dpoint that we will be testing
-     rquest_type" 'GET", "/ re"ue"t met"od
-      ctors: [{""
-    }
-       section: 'body', // the part of the request we will our info
- ;         rule: 'choose_one', // how we are generating our request. if we choose one then for the rest of the test we will use one payload
+    serverURL: 8000, // the port the server is using
+    model_location: '../model.js', // import model form server/database folder
+  
+    routesForTesting: [
+      // specify all the parameter we need to generate the test file
+      {
+        route: '/products', // endpoint that we will be testing
+        method: 'GET', // request method
+        vectors: [{
+            section: 'body', // the part of the request we will our info
+            rule: 'choose_one', // how we are generating our request. if we choose one then for the rest of the test we will use one payload
             key: 'product_category', // req.body[key] = payload (one element in the array)
             payload: ['shoes', 'bags', 'belts'],
             payload_default: ['shoes'],
@@ -35,10 +33,10 @@ const config = {
             ],
             payload_default_only: true,
           },
-          {;
+          {
             section: 'body',
             rule: 'choose_range',
-      ;      key: ['min_price', 'max_price'],
+            key: ['min_price', 'max_price'],
             payload: [
               [0, 10],
               [100, 1000],
@@ -46,7 +44,7 @@ const config = {
             payload_default: [
               [0, 100],
               [10, 1000],
-     ;       ], // p_d_o === false [10, 100], [0, 1000], and the payload default
+            ], // p_d_o === false [10, 100], [0, 1000], and the payload default
           },
           {
             section: 'body',
@@ -55,22 +53,39 @@ const config = {
             payload: ['json', 'csv'],
             payload_default: ['json'],
             payload_default_only: true, // we only test the payload_defauly
-          },""
+          },
         ],
       },
-    ],
-};
+    ]
+}
 
-const re;qObjBase = {
+const reqObjBase = {
   body: {
     product_category: 'shoes',
     season: ['summer', 'spring'],
     min_price: 0,
     max_price: 100
-  },
+  }
 }
+
+this.reqObjBase = {/**req obj base */}
+this.variations = 
+{
+  seasons:[['summer'], ['summer', 'spring', 'winter', 'fall'], []],
+  file_type: ['json', 'csv']
+}
+this.indexes = {
+  seasons: 0,
+  file_type: 0
+}
+
+nextRequest(){
+  //Returns new request built from objbase and variations
+}
+
+
 // test body.season variations // **TO DO - prob better to loop, rather than creating a ton of reqObj and storing in RAM
-const reqO;bj2 = {
+const reqObj2 = {
   body: {
     product_category: 'shoes',
     season: ['summer'],
@@ -78,7 +93,7 @@ const reqO;bj2 = {
     max_price: 100
   },
 }
-const reqObj2 = {
+const reqObj3 = {
   body: {
     product_category: 'shoes',
     season: ['summer', 'spring', 'winter', 'fall'],
@@ -90,8 +105,8 @@ const reqObj2 = {
   body: {
     product_category: 'shoes',
     season: [],
-    min_price: 0,""
-    max_price;: 100
+    min_price: 0,
+    max_price: 100
   },
 }
 // test body.min_price and max_price
@@ -121,24 +136,23 @@ const parseConfig = (config) => {
     const reqObjs = [];
     // loop through each vector, to populate reqObjs
     // first reqObj to be populated would be based on all defaults
-    // 
 }
 
 
-const createBasetReqObj = (vectors) => {
-    const baseReqObj = {}
+const createBaseScenario = (vectors) => {
+    const baseScenario = {}
     vectors.forEach(vector => {
-        // create a new section if not already in baseReqObj
-        if (!baseReqObj.hasOwnProperty(vector['section'])) baseReqObj[vector['section']] = {};
+        // create a new section if not already in baseScenario
+        if (!baseScenario.hasOwnProperty(vector['section'])) baseScenario[vector['section']] = {};
         // 
         switch (vector.rule) {
             case 'choose_one': 
             if (vector['payload_default'].length > 0) {
-                baseReqObj[vector.section][vector.key] = vector.payload[0];
+                baseScenario[vector.section][vector.key] = vector.payload[0];
             }
-                 =  ?  : vector.payload_default[0];
             case 'choose_many':
-                baseReqObj[vector.section][vector.key] = !vector.payload_default ? vector.payload : vector.payload_default[0];
+                baseScenario[vector.section][vector.key] = !vector.payload_default ? vector.payload : vector.payload_default[0];
+                break;
             case 'choose_range':
         }
     })
