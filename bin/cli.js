@@ -17,24 +17,22 @@ const cmd = args[0] || 'help';
 switch (cmd) {
   case 'help' || '-help' || '--help' || '-h':
     if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`)
+      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
     } else {
       require('./cmds/help')();
     }
     break;
   case 'version' || '-version' || '--version' || '-v':
     if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`)
-    } 
-    else {
+      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
+    } else {
       require('./cmds/version')();
     }
     break;
   case 'init':
     if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`)
-    } 
-    else {
+      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
+    } else {
       require('./cmds/init')();
     }
     break;
@@ -43,7 +41,7 @@ switch (cmd) {
     require('./cmds/generate')();
     break;
   case 'start':
-    const testFiles = args.slice(1)
+    const testFiles = args.slice(1);
     require('./cmds/start')(...testFiles);
     break;
   default:

@@ -7,8 +7,8 @@
 const requireUncached = require('../util/requireUncached.js');
 
 const generate = (routes) => {
-    
-    // TO DO - if any specified route is not in .config, return error & stop execution
-}
+
+  // TO DO - if any specified route is not in .config, return error & stop execution
+};
 
 module.exports = generate;
