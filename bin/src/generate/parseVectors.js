@@ -1,5 +1,32 @@
+/**
+ * @name bin/src/generate/parseVectors
+ * @description Use vectors from battletest.config.js to create (i) baseScenario and (ii) variations
+ * @param {Array.<Object>} vectors - vectors associated with a particular route from battletest.config.js
+ * @returns {Object} baseScenario - baseScenario that will be used as the template for all other secnarios; all other scenarios will replace a particular section.key value with one in the variations object (also returned from this function)
+ * @returns {Object} variations - object containing the alternative values each section.key will have in childScenarios
+ * @example 
+ *  * baseScenario = { 
+ *  body:  { 
+ *       product_category: 'shoes', 
+ *       season: [ 'summer', 'spring' ], 
+ *       min_price: 0, 
+ *       max_price: 100, 
+ *       file_type: 'json' 
+ *     } 
+ *   }
+ * variations = { body:  
+ *  { season: [
+ *     [ 'summer' ], 
+ *     [ 'winter' ], 
+ *     [ 'summer', 'winter', 'fall', 'spring' ]
+ *   ], 
+ *    'r:min_price:max_price': [ [ 10, 1000 ], [ 10, 100 ], [ 0, 1000 ] ] , 
+ *    file_type: [ 'csv' ] } } 
+ */
+
 const _ = require("lodash");
 
+// FOR TESTING
 const vectors = [
   {
     section: 'body', // the part of the request we will our info
@@ -42,7 +69,7 @@ const vectors = [
   },
 ]
 
-const parseVectors = (vectors) =>  {
+function parseVectors (vectors) {
     const baseScenario = {};
     const variations = {};
     vectors.forEach(vector => {
@@ -112,7 +139,7 @@ const parseVectors = (vectors) =>  {
           case 'choose_many':
             // For 'choose_many', test 
             const potentialVariations = [
-              [_.sample(vector.payload, 1)], 
+              [_.sample(vector.payload, 1)], // pick
               [_.sample(vector.payload, Math.ceil(vector.payload.length/2))], 
               [...vector.payload]
             ].filter(p => {
@@ -128,12 +155,33 @@ const parseVectors = (vectors) =>  {
     })
     return {baseScenario, variations};
 }
+/**
+ * TEST 
+ * */
+const {baseScenario, variations } = parseVectors(vectors)
+console.log(baseScenario)
+Object.keys(variations.body).forEach(a => {console.log(variations.body[a])})
 
-// const {baseScenario, variations } = parseVectors(vectors)
-// console.log(baseScenario)
-// Object.keys(variations.body).forEach(a => {console.log(variations.body[a])})
-// console.log(variations.body['r:min_price:max_price'])
-// console.log(variations.body.season)
-// console.log(variations.body.file_type)
+/**
+ * Result
+ * 
+ * baseScenario = { 
+ *  body:  { 
+        product_category: 'shoes', 
+        season: [ 'summer', 'spring' ], 
+        min_price: 0, 
+        max_price: 100, 
+        file_type: 'json' 
+      } 
+    }
+ * variations = { body:  
+   { season: [
+      [ 'summer' ], 
+      [ 'winter' ], 
+      [ 'summer', 'winter', 'fall', 'spring' ]
+    ], 
+     'r:min_price:max_price': [ [ 10, 1000 ], [ 10, 100 ], [ 0, 1000 ] ] , 
+     file_type: [ 'csv' ] } } 
+ */
 
 module.exports = parseVectors;
