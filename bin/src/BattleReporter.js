@@ -1,5 +1,8 @@
 const Mocha = require('mocha');
 const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
+const readline = require('readline');
 // constant event name variables to use
 const {
   EVENT_RUN_BEGIN, // execution begin
@@ -12,12 +15,13 @@ const {
   EVENT_TEST_END, // test ends
   EVENT_TEST_PENDING, // test pending
 } = Mocha.Runner.constants;
+
 const { Base } = Mocha.reporters;
 const { cursor, color } = Base;
 
 /**
  * @name BattleReporter
- * @description Custom mocha reporter function to log info to a json object
+ * @description Custom mocha reporter class to log info to a json object
  * @param {Mocha.Runner} runner
  *
  */
@@ -29,9 +33,10 @@ class BattleReporter {
     this.pending = [];
     this.failures = [];
     this.passes = [];
+    this.reportObj = {};
     runner
       .once(EVENT_RUN_BEGIN, () => {
-        console.log('⚔️ ⚔️ ⚔️  BattleTest Commence! ⚔️ ⚔️ ⚔️');
+        console.log(`⚔️ ⚔️ ⚔️  ${chalk.bold('BattleTest Commence!')} ⚔️ ⚔️ ⚔️`);
       })
       .on(EVENT_SUITE_BEGIN, (suite) => {
         this.increaseIndent();
@@ -68,17 +73,32 @@ class BattleReporter {
         console.log(fmt, test.title, test.duration);
       })
       .once(EVENT_RUN_END, () => {
-        console.log('OK!');
-        console.log(`Final results: ${stats.passes}/${stats.passes + stats.failures} ok`);
-        console.log(this.cleanCycles);
-        const obj = {
+        // formatting the output string results
+        const fmt = `\n${chalk.bold.inverse('Final results:')}\n${
+          chalk.bold.green(stats.passes)
+        }${chalk.bold(' / ')
+        }${chalk.bold.blue(stats.tests)
+        } tests passed!`;
+        console.log(fmt);
+
+        this.reportObj = {
           stats,
-          tests: this.tests.map(this.clean),
-          pending: this.pending.map(this.clean),
-          failures: this.failures.map(this.clean),
-          passes: this.passes.map(this.clean),
+          tests: this.tests.map(this.clean, this),
+          pending: this.pending.map(this.clean, this),
+          failures: this.failures.map(this.clean, this),
+          passes: this.passes.map(this.clean, this),
         };
-        console.log('This should print!');
+        const rl = readline.createInterface({
+          input: process.stdin,
+          output: process.stdout,
+        });
+        rl.question('Would you like to output your results to an external file? (y/n): ', (ans) => {
+          if (ans === 'y') {
+            console.log('Writing to output file');
+            this.writeReport();
+          }
+          rl.close();
+        });
       });
   }
 
@@ -153,6 +173,20 @@ class BattleReporter {
     }, err);
     return res;
   }
+
+  /**
+   * Write the results of the test to an external file
+   *
+   */
+  writeReport() {
+    // console.log(process.cwd());
+    const dirPath = path.join(process.cwd(), '/report');
+    const filePath = path.join(dirPath, 'battletest.log');
+    // fs.mkdirSync(dirPath);
+    fs.writeFileSync(filePath, JSON.stringify(this.reportObj));
+    console.log(`Written results to ${filePath}`);
+  }
 }
+
 
 module.exports = BattleReporter;
