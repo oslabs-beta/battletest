@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable class-methods-use-this */
 const Mocha = require('mocha');
 const chalk = require('chalk');
 const fs = require('fs');
@@ -17,7 +20,7 @@ const {
 } = Mocha.Runner.constants;
 
 const { Base } = Mocha.reporters;
-const { cursor, color } = Base;
+// const { cursor, color } = Base;
 
 /**
  * @name BattleReporter
@@ -50,7 +53,6 @@ class BattleReporter {
       })
       .on(EVENT_TEST_END, (test) => {
         this.tests.push(test);
-        // Write to JSON
       })
       .on(EVENT_TEST_PASS, (test) => {
         this.passes.push(test);
