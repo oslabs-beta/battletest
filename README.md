@@ -75,5 +75,3 @@ Vector rules:
 - 'choose_many':
 - 'choose_range':
 - 'choose_each':
-
-"performance warning" tags on how to specify vector rules
