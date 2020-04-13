@@ -8,10 +8,10 @@ const fs = require('fs');
 
 const validateConfig = (config) => {
   const {
-    server_location,
-    serverURL,
-    model_location,
-    routesForTesting,
+    server_location, // file that the server resides in
+    serverURL, // Port number
+    model_location, // location of database model file
+    routesForTesting, // array of objects
   } = config;
 
   if (!fs.existsSync(server_location)) {
