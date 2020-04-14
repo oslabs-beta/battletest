@@ -1,14 +1,36 @@
 /**
  * @name bin/cmds/generate
- * @description execute "battletest generate" to create test files for all or specified routes based on battletest.config.js
- * @param {Array.String} [routes] - names of routes for which test files will be generated, specified by the user
- * @returns {null} undefined
+ * @description Generate test files for all or specified paths in battletest.config.js
+ * @param {Array.String} [paths] - Names of routes for which test files to be generated.
+ * @returns {null} saves test files to __battletest__
  */
+
+const path = require('path');
 const requireUncached = require('../util/requireUncached.js');
+const generateTestSetup = require('../src/generate/generateTestSetup.js');
 
-const generate = (routes) => {
+//const TestFile = require('../src/generate/TestFile.js');
 
-  // TO DO - if any specified route is not in .config, return error & stop execution
+
+const generate = (...paths) => {
+  const config = requireUncached(path.resolve(process.cwd(),'battletest.config.js'));
+
+  // if user provided paths, check that paths do exist
+  if (paths.length > 0) {
+    // TO DO
+  }
+  else {
+  }
+
+  let newTestFile;
+  for (path of Object.keys(config.paths)) {
+    for (operation of Object.keys(config.paths[path])) {
+      writeTestFile(path, operation, config.paths[path][operation]);
+    }
+  }
+
+  generateTestSetup(config.serverLocation);
+
 };
 
 module.exports = generate;
