@@ -1,7 +1,7 @@
 /**
  * @name bin/cmds/start
- * @description execute "battletest start" by running all or specified test filess in __battletest__ folder
- * @param {Array.String} [testFiles] - names of testFiles passed by the user
+ * @description Run test files (specified or all) in __battletest__
+ * @param {Array.<String>} [filenames] - Test files to be executed, as specified by the user.
  * @returns {null} undefined
  */
 
@@ -9,52 +9,36 @@ const fs = require('fs');
 const path = require('path');
 const Mocha = require('mocha');
 
-// initialize options for mocha
 const mochaOptions = require('../src/mochaOptions.js');
+const checkFiles = require('../src/start/checkFiles.js')
 
-const mocha = new Mocha(mochaOptions); // create a new instance of mocha
+const mocha = new Mocha(mochaOptions);
 
-const start = (...testFiles) => {
-  // get path of __battletest__
-  const testDirectory = path.resolve(process.cwd(), '__battletest__');
+const start = (...filenames) => {
+  const directory = path.resolve(process.cwd(), '__battletest__');
 
-  if (testFiles.length > 0) {
-    // add .js to each string in testFiles, if not already specified
-    testFiles = testFiles.map((filename) => (filename.substr(-3) === '.js' ? filename : `${filename}.js`));
-
-    // check that all test files are in testDirectory
-    const filesInTestDirectory = fs.readdirSync(testDirectory); // get list of files in test directory
-    const notInTestDirectory = testFiles.reduce((acc, testFile) => {
-      if (!filesInTestDirectory.includes(testFile)) {
-        acc.push(testFile);
-        return acc;
-      }
-      return acc;
-    }, []);
-    // if any specified testFile is not in testDirectory, return error and stop execution
-    if (notInTestDirectory.length > 0) {
-      console.error(`battletest: following files are not found in __battletest__: ${notInTestDirectory}.`);
-      return;
+  if (filenames.length > 0) {
+    const notInTestDirectory = checkFiles(filenames, directory);
+    if (notInTestDirectory) {
+      console.error(`battletest: following files were not found in __battletest__: ${notInTestDirectory}.`);
+      return; 
     }
-    // otherwise, ready to add testFiles to the mocha instance
-    // add mochaServer to testFiles, if not already specified
-    if (testFiles.indexOf('mochaServer.js') < 0) { testFiles.push('mochaServer.js'); }
-  } else {
-    // if no testFile specified, then add all tests in __battletest__ to testFiles
-    testFiles = fs.readdirSync(testDirectory).filter((filename) => filename.substr(-3) === '.js'); // add only .js files to testFiles
+    if (filenames.indexOf('testSetup.js') < 0) { filenames.push('testSetup.js'); }   
+  } 
+  else {
+    // queue all .js files in __battletest__ to be executed.
+    filenames = fs.readdirSync(directory).filter((filename) => filename.substr(-3) === '.js');
   }
-
-  // add tests in __battletest__ to testFiles
-  testFiles.forEach((file) => {
-    mocha.addFile(path.join(testDirectory, file));
+  // TO DO: Ensure testSetup has been created
+  // add all files to the mocha instance to be executed.
+  filenames.forEach((file) => {
+    mocha.addFile(path.join(directory, file));
   });
 
-  // execute tests
   mocha.run((failures) => {
-    process.exitCode = failures ? 1 : 0; // if there were failures, exit with 1
+    process.exitCode = failures ? 1 : 0;
   });
 
-  // dump test files that have been executed, to allow for fresh reload
   mocha.unloadFiles();
 };
 
