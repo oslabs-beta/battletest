@@ -25,11 +25,11 @@ const generate = (...paths) => {
   let newTestFile;
   for (path of Object.keys(config.paths)) {
     for (operation of Object.keys(config.paths[path])) {
-      writeTestFile(path, operation, config.paths[path][operation]);
+      generateTestFile(path, operation, config.paths[path][operation]);
     }
   }
 
-  generateTestSetup(config.serverLocation);
+  generateTestSetup(config.serverLocation, config.serverURL);
 
 };
 
