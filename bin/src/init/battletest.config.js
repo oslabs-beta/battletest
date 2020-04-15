@@ -10,10 +10,7 @@ module.exports = {
             name: "petID",
             in: "path",
             schema: {
-              type: "array",
-              items: {
-                type: "integer",
-              },
+              type: "integer"
             },
           },
           {

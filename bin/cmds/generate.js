@@ -14,11 +14,11 @@ const config = requireUncached(
   path.resolve(process.cwd(), "battletest.config.js")
 );
 
-const generate = (...paths) => {
-  // if user provided paths, check that paths do exist
-  if (paths.length > 0) {
+const generate = (...args) => {
+  // if user provided paths, check that paths do exist in config
+  if (args.length > 0) {
     const temp = Object.keys(config.paths);
-    const notInConfig = paths.filter((path) => !temp.includes(path));
+    const notInConfig = args.filter((path) => !temp.includes(path));
     if (notInConfig) {
       console.error(
         `battletest: following paths were not found in battletest.config.js: ${notInConfig}.`
@@ -27,13 +27,15 @@ const generate = (...paths) => {
     }
   }
 
-  for (path of Object.keys(config.paths)) {
-    for (operation of Object.keys(config.paths[path])) {
-      generateTestFile(path, operation, config.paths[path][operation]);
+  for (let p of Object.keys(config.paths)) {
+    for (let operation of Object.keys(config.paths[p])) {
+      generateTestFile(config.serverURL, p, operation, config.paths[p][operation]);
     }
   }
 
   generateTestSetup(config.serverLocation, config.serverURL);
+
+  console.log('battletest: Test files have been generated in __battletest__folder.')
 };
 
 module.exports = generate;
