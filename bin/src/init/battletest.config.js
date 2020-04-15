@@ -40,6 +40,11 @@ module.exports = {
             in: "path",
             schema: { type: "integer" },
           },
+          {
+            name: "ownerID",
+            in: "path",
+            schema: { type: "integer" },
+          },
         ],
         requestBody: {
           "application/json": {
@@ -62,3 +67,24 @@ module.exports = {
     },
   },
 };
+
+//  scenario = {
+//     path : {
+//         'petID': 3,
+//         'ownerID': 4
+//   *  }
+//   *  requestBody: {
+//   *      'json/application': { <= separate scenario
+//   *          'petType': // string,
+//   *          'favoriteFoods': // arry of string
+//   *          'family': {
+//   *               'mom': //string
+//   *               'brothers': // array of strings,
+//   *               'sisters': // array of strings
+//   *           }
+//   *      'text/html': { <= separate scenario
+//   *
+//   *       }
+//   *   }
+//   * }
+//   * }
