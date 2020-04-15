@@ -8,26 +8,24 @@
 const path = require('path');
 const requireUncached = require('../util/requireUncached.js');
 const generateTestSetup = require('../src/generate/generateTestSetup.js');
-
-//const TestFile = require('../src/generate/TestFile.js');
-
+const config = requireUncached(path.resolve(process.cwd(),'battletest.config.js'));
 
 const generate = (...paths) => {
-  const config = requireUncached(path.resolve(process.cwd(),'battletest.config.js'));
-
   // if user provided paths, check that paths do exist
   if (paths.length > 0) {
-    // TO DO
-  }
-  else {
-  }
-
-  let newTestFile;
-  for (path of Object.keys(config.paths)) {
-    for (operation of Object.keys(config.paths[path])) {
-      generateTestFile(path, operation, config.paths[path][operation]);
+    const temp = Object.keys(config.paths);
+    const notInConfig = paths.filter(path => !temp.includes(path));
+    if (notInConfig) {
+      console.error(`battletest: following paths were not found in battletest.config.js: ${notInConfig}.`);
+      return;
     }
   }
+
+  // for (path of Object.keys(config.paths)) {
+  //   for (operation of Object.keys(config.paths[path])) {
+  //     generateTestFile(path, operation, config.paths[path][operation]);
+  //   }
+  // }
 
   generateTestSetup(config.serverLocation, config.serverURL);
 

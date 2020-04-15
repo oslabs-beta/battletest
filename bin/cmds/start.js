@@ -20,19 +20,16 @@ const start = (...filenames) => {
   if (filenames.length > 0) {
     const notInTestDirectory = checkFiles(filenames, directory);
     if (notInTestDirectory) {
-      console.error(`battletest: following files are not found in __battletest__: ${notInTestDirectory}.`);
+      console.error(`battletest: following files were not found in __battletest__: ${notInTestDirectory}.`);
       return; 
     }
-    else {
-      // queue testSetup.js to be executed.
-      if (filenames.indexOf('testSetup.js') < 0) { filenames.push('testSetup.js'); }
-    }   
+    if (filenames.indexOf('testSetup.js') < 0) { filenames.push('testSetup.js'); }   
   } 
   else {
     // queue all .js files in __battletest__ to be executed.
     filenames = fs.readdirSync(directory).filter((filename) => filename.substr(-3) === '.js');
   }
-
+  // TO DO: Ensure testSetup has been created
   // add all files to the mocha instance to be executed.
   filenames.forEach((file) => {
     mocha.addFile(path.join(directory, file));
