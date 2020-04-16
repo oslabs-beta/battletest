@@ -15,19 +15,17 @@ const expect = chai.expect;
 const result = {}
 
 describe('${path}_${operation}', function() {
-    
-    ${testcode}
+${testcode}
+afterEach(function() {
+    result[this.currentTest.fullTitle()]['passed'] = this.currentTest.state === 'passed';
+});
 
-    afterEach(function() {
-        result[this.currentTest.fullTitle()]['passed'] = this.currentTest.state === 'passed';
+after(() => {
+    const resultPath = path.resolve(process.cwd(),"__battletest__/__result__/${path.replace(/\//g,'_')}_${operation}.json")
+    fs.writeFile(resultPath, JSON.stringify(result, null, 2), function(err) {
+    if (err) throw err
     });
-
-    after(() => {
-        const resultPath = path.resolve(process.cwd(),"__battletest__/__result__/${path}_${operation}.json")
-        fs.writeFile(resultPath, JSON.stringify(result), function(err) {
-        if (err) throw err
-        });
-    });
+});
 });
     `
      return code;

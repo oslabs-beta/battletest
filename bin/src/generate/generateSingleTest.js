@@ -52,9 +52,7 @@ const resolveRequestBody = (scenario) => {
     return `.send()`;
   }
   const contentType = Object.keys(scenario.requestBody)[0];
-  return `\n    .type('${contentType}')\n    .send(${JSON.stringify(
-    scenario.requestBody[contentType]["body"]
-  )})`;
+  return `\n    .type('${contentType}')\n    .send(${JSON.stringify(scenario.requestBody[contentType]["body"])})`;
 };
 
 const buildSupertest = (path, operation, scenario) => {
@@ -69,12 +67,9 @@ const buildSupertest = (path, operation, scenario) => {
   return code;
 };
 
-const generateSingleTest = (path, operation, scenario) => {
-  // TO DO: if requestBody, need to specify content type
-  // specify
-
+const generateSingleTest = (path, operation, scenario, testname) => {
   return `
-    it('${scenario.randomization}', (done) => {
+    it('${testname}', function(done){
         let endTime;
         const startTime = Date.now();
         ${buildSupertest(path, operation, scenario)}

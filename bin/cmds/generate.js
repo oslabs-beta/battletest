@@ -29,13 +29,13 @@ const generate = (...args) => {
 
   for (let p of Object.keys(config.paths)) {
     for (let operation of Object.keys(config.paths[p])) {
-      generateTestFile(config.serverURL, p, operation, config.paths[p][operation]);
+      generateTestFile(p, operation, config.paths[p][operation]);
     }
   }
 
   generateTestSetup(config.serverLocation, config.serverURL);
 
-  console.log('battletest: Test files have been generated in __battletest__folder.')
+  console.log('battletest: Test files saved in __battletest__.')
 };
 
 module.exports = generate;
