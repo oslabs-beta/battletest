@@ -64,7 +64,6 @@ function generateTestFile(path, operation, operationObject) {
       }
     }
   }
-  console.log('requestBody:', operationObject.hasOwnProperty('requestBody'))
   if (operationObject.hasOwnProperty('requestBody')) {
     const contentType = Object.keys(generators.requestBody)[0];
     skimBody(generators.requestBody[contentType], (mapArr = [contentType]));
