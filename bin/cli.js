@@ -37,8 +37,8 @@ switch (cmd) {
     }
     break;
   case 'generate':
-    // TO DO: "generate" should take in arguments to specify which test files to generate
-    require('./cmds/generate')();
+    const paths = args.slice(1);
+    require('./cmds/generate')(...paths);
     break;
   case 'start':
     const testFiles = args.slice(1);
