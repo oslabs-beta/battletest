@@ -4,7 +4,7 @@ const buildBody = (propObj, baseObj, genObj, propName) => {
   //if the type is primitive
   if (propObj.type !== "object" && propObj.type !== "array") {
     genObj[propName] = new RandGen(propObj.type);
-    const { val, descript } = genObj[propName].next();
+    const { val } = genObj[propName].next();
     baseObj[propName] = val;
     return;
   }
@@ -12,7 +12,7 @@ const buildBody = (propObj, baseObj, genObj, propName) => {
   genObj[propName] = {};
   if (propObj.type === "array") {
     genObj[propName] = new RandGen(propObj.type, propObj.items);
-    const { val, descript } = genObj[propName].next();
+    const { val } = genObj[propName].next();
     baseObj[propName] = val;
     return;
   }

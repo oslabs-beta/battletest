@@ -1,10 +1,11 @@
 const generateSingleTest = require("./generateSingleTest.js");
 const generateDescribe = require("./generateDescribe.js");
 const saveTestFile = require("./saveTestFile.js");
+const buildTestTitle = require("./buildTestTitle.js");
 const buildBody = require("./buildBody.js");
 const RandGen = require("./randGen.js");
 
-function generateTestFile(serverURL, path, operation, operationObject) {
+function generateTestFile(path, operation, operationObject) {
   const baseScenario = {};
   const generators = {};
   let testCode = "";
@@ -45,6 +46,8 @@ function generateTestFile(serverURL, path, operation, operationObject) {
       }
     }); 
   }
+  //BASE SCENARIO
+  testCode += generateSingleTest(path, operation, baseScenario, 'Base Scenario');
 
   //GENERATING RANDOM PARAMETER FIELDS
   if (operationObject.hasOwnProperty('parameters')) {
@@ -56,12 +59,12 @@ function generateTestFile(serverURL, path, operation, operationObject) {
         for (let i = 0; i < 5; i++) {
           const { val, descript } = generators[fieldKey][nameKey].next();
           scenario[fieldKey][nameKey] = val;
-          testCode += generateSingleTest(path, operation, scenario);
+          testCode += generateSingleTest(path, operation, scenario, buildTestTitle.parameters(fieldKey, nameKey, descript));
         }
       }
     }
   }
-  
+  console.log('requestBody:', operationObject.hasOwnProperty('requestBody'))
   if (operationObject.hasOwnProperty('requestBody')) {
     const contentType = Object.keys(generators.requestBody)[0];
     skimBody(generators.requestBody[contentType], (mapArr = [contentType]));
@@ -85,7 +88,7 @@ function generateTestFile(serverURL, path, operation, operationObject) {
       for (let i = 0; i < 5; i++) {
         const { val, descript } = genObj.next();
         target[lastKey] = val;
-        testCode += generateSingleTest(path, operation, scenario);
+        testCode += generateSingleTest(path, operation, scenario, buildTestTitle.requestBody([...mapArr, lastKey], descript)); 
       }
       return;
     }
