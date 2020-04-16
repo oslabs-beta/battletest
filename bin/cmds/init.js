@@ -37,9 +37,10 @@ const init = (args) => {
   const fileType = fileLocation.split(".")[1];
   if (fileType === "js") {
     // check if it is an express file
-    if ()
-
+    const server = require(filelocation);    
     //const configFile = expressParser(fileLocation);
+    saveConfigFile(configFile);
+    server.close();
     return;
   }
 
