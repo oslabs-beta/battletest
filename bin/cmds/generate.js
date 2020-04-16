@@ -27,16 +27,16 @@ const generate = (...args) => {
       return;
     }
   }
-  // generateFolders();
-  // for (let p of Object.keys(config.paths)) {
-  //   for (let operation of Object.keys(config.paths[p])) {
-  //     generateTestFile(p, operation, config.paths[p][operation]);
-  //   }
-  // }
+  generateFolders();
+  for (let p of Object.keys(config.paths)) {
+    for (let operation of Object.keys(config.paths[p])) {
+      generateTestFile(p, operation, config.paths[p][operation]);
+    }
+  }
 
-  // generateTestSetup(config.serverLocation, config.serverURL);
+  generateTestSetup(config.serverLocation, config.serverURL);
 
-  // console.log("battletest: Test files saved in __battletest__.");
+  console.log("battletest: Test files saved in __battletest__.");
 };
 
 module.exports = generate;
