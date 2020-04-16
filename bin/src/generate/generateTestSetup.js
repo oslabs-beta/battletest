@@ -9,7 +9,8 @@ const path = require('path');
 module.exports = (serverLocation, serverURL) => {
     const code = `
 before(async () => {
-    testServer = await require('${serverLocation}');
+    const { server, app } = await require('${serverLocation}');
+    testServer = server;
     serverURL = '${serverURL}';
 });
     

@@ -9,7 +9,8 @@ const fs = require("fs");
 const path = require("path");
 const saveConfigFile = require("../src/init/saveConfigFile.js");
 const checkFiles = require("../util/checkFiles.js");
-// const expressParser = require("../src/init/expressParser.js");
+const expressParser = require("../src/init/expressParser.js");
+const expressConfig = require("../src/init/expressConfig.js");
 // const openApiParser = require("../src/init/openApiParser.js");
 
 const init = (args) => {
@@ -35,10 +36,12 @@ const init = (args) => {
   }
 
   const fileType = fileLocation.split(".")[1];
+  const filePath = path.resolve(process.cwd(), fileLocation);
   if (fileType === "js") {
     // check if it is an express file
-    const server = require(filelocation);    
-    //const configFile = expressParser(fileLocation);
+    const { server, app } = require(filePath);    
+    const configFile = expressConfig(expressParser(app));
+    
     saveConfigFile(configFile);
     server.close();
     return;

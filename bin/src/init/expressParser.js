@@ -8,7 +8,6 @@
 
 // User to fill the path to their server file when they implement Battletest:
 // const Server = require('/Users/bintakinteh/Desktop/Codesmith/Production-Project/battletest-sim/server.js');
-const Server = require("./server/server");
 
 function expressParser(server) {
   const routesArray = server._router.stack.filter(
@@ -65,34 +64,6 @@ function routeData(routerLayers) {
   // }
 }
 
-// "/pet/:petID": {
-//   GET: {
-//     parameters: [
-//       {
-//         name: "petID",
-//         in: "path",
-//         schema: {
-//           type: "integer",
-//         },
-//       },
-//       {
-//         name: "lastVisitedDate",
-//         in: "cookie",
-//         schema: { type: "string" },
-//       },
-//       {
-//         name: "token",
-//         in: "header",
-//         schema: {
-//           type: "array",
-//           items: {
-//             type: "integer",
-//           },
-//         },
-//       },
-//     ],
-//   },
-// }
 // access each routeInfo =>
 // whatever the req is attached to (body, params etc.),  "req.body" BODY
 // and the parameters (if they exist)
@@ -155,70 +126,32 @@ function getReqInfo(routeInfo) {
             break;
         }
       }
-      const operationObject = {
-        parameters: parameters,
-        requestBody: {
-          "application/json": {
-            schema: {
-              type: "object",
-              properties: reqBodyProp,
-            },
+      const operationObject = {};
+      if (parameters.length > 0) operationObject['parameters'] = parameters;
+      if (Object.keys(reqBodyProp).length > 0) operationObject['requestBody'] = {
+        "application/json": {
+          schema: {
+            type: "object",
+            properties: reqBodyProp,
           },
         },
       };
 
       if (!paths[endpoint]) paths[endpoint] = {};
       paths[endpoint][method] = operationObject;
-      // for (let ref of fullReq) {
-      //   const refArr = ref.split('.').slice(1);
-      //   console.log(refArr)
-      //   for (let i of refArr) {
-      //     if (i === 'body') {
-      //       if (!requestShape.hasOwnProperty(body)) {
-      //         requestShape['requestBody'] = {
-      //           'application/json': {
-      //             schema: {
-      //               type: "object",
-      //               properties: {
-
-      //               }
-      //             }
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
-
-      // for (let eachLoc of fullReq) {
-      //   let finalLoc = ''
-      //   //'req.body.params'
-
-      //   for(let i = 0; i < eachLoc.length; i++) {
-      //     let dotCount = 0
-      //     if (eachLoc[i] === '.') {
-      //       dotCount++
-      //       if(dotCount < 2) {
-      //         finalLoc = eachLoc.slice(i + 1, eachLoc.length);
-      //         reqInfo[location] = finalLoc;
-      //       } else {
-      //         // if the req's location is more nested
-      //         'req.body.params'
-      //         finalLoc = eachLoc.slice(i + 1, eachLoc.length)
-      //       }
-      //     }
-      //   }
-      // }
-      // for (let eachParam of endpoint[middlewareAndMethod][params]) {
-      //   reqInfo[params] = eachParam.name
-      // }
     }
   }
   return paths;
 }
 
-const routeI = expressParser(Server);
-console.log(JSON.stringify(routeI, null, 2))
+
+module.exports = (server) => {
+  const routeInfo = expressParser(server);
+  return JSON.stringify(getReqInfo(routeInfo), null, 2)
+}
+
+// const routeI = expressParser(Server);
+// console.log(JSON.stringify(routeI, null, 2))
 //console.log(JSON.stringify(getReqInfo(routeI), null, 2))
 
 // console.log(Server)
