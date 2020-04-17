@@ -10,41 +10,44 @@
 const args = process.argv.slice(2);
 //  the above line slices the first 2 extra arguments, results in an array of cmds ['init', ...]
 
-const cmd = args[0] || 'help';
+const cmd = args[0] || "help";
 // cmd equals first argument in array, othewise will equal 'help'
 
-
 switch (cmd) {
-  case 'help' || '-help' || '--help' || '-h':
+  case "help" || "-help" || "--help" || "-h":
     if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
+      console.error(
+        `battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`
+      );
     } else {
-      require('./cmds/help')();
+      require("./cmds/help")();
     }
     break;
-  case 'version' || '-version' || '--version' || '-v':
+  case "version" || "-version" || "--version" || "-v":
     if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
+      console.error(
+        `battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`
+      );
     } else {
-      require('./cmds/version')();
+      require("./cmds/version")();
     }
     break;
-  case 'init':
-    if (args.length > 1) {
-      console.error(`battletest: "${cmd}" does not take in additional arguments.  Please see "battletest --help" for available commands.`);
-    } else {
-      require('./cmds/init')();
-    }
+  case "init":
+    const configInput = args.slice(1);
+    require("./cmds/init")(configInput);
     break;
-  case 'generate':
-    // TO DO: "generate" should take in arguments to specify which test files to generate
-    require('./cmds/generate')();
+  case "generate":
+    // TO DO: check if this works!
+    const paths = args.slice(1);
+    require("./cmds/generate")(...paths);
     break;
-  case 'start':
+  case "start":
     const testFiles = args.slice(1);
-    require('./cmds/start')(...testFiles);
+    require("./cmds/start")(...testFiles);
     break;
   default:
-    console.error(`battletest: "${cmd}" is not a valid command. Please see "battletest --help" for available commands.`);
+    console.error(
+      `battletest: "${cmd}" is not a valid command. Please see "battletest --help" for available commands.`
+    );
     break;
 }

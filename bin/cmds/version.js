@@ -4,6 +4,5 @@
  */
 module.exports = () => {
   const { version } = require('../../package.json');
-  // process.stdout.write(`${version}\n`);
   console.log(version);
 };
