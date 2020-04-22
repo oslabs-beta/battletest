@@ -5,6 +5,8 @@ const buildTestTitle = require("./buildTestTitle.js");
 const buildBody = require("./buildBody.js");
 const RandGen = require("./randGen.js");
 
+// '/pet' '/user'
+// 'GET' 'PUT'
 function generateTestFile(path, operation, operationObject) {
   const baseScenario = {};
   const generators = {};
@@ -91,6 +93,7 @@ function generateTestFile(path, operation, operationObject) {
       }
       return;
     }
+
     for (let key in genObj) {
       skimBody(genObj[key], [...mapArr, key]);
     }
