@@ -6,32 +6,32 @@ module.exports = {
     '/pet/:petID': {
       GET: {
         parameters: [{
-            name: 'id',
-            in: 'params',
-            schema: {
-              type: 'array',
-              items: {
-                type: 'integer',
-              },
+          name: 'id',
+          in: 'params',
+          schema: {
+            type: 'array',
+            items: {
+              type: 'integer',
             },
           },
-          {
-            name: 'lastVisitedDate',
-            in: 'cookie',
-            schema: {
-              type: 'string',
+        },
+        {
+          name: 'lastVisitedDate',
+          in: 'cookie',
+          schema: {
+            type: 'string',
+          },
+        },
+        {
+          name: 'token',
+          in: 'header',
+          schema: {
+            type: 'array',
+            items: {
+              type: 'integer',
             },
           },
-          {
-            name: 'token',
-            in: 'header',
-            schema: {
-              type: 'array',
-              items: {
-                type: 'integer',
-              },
-            },
-          },
+        },
         ],
       },
       PUT: {
@@ -41,7 +41,7 @@ module.exports = {
           schema: {
             type: 'integer',
           },
-        }, ],
+        }],
         requestBody: {
           'application/json': {
             schema: {
@@ -51,11 +51,11 @@ module.exports = {
                   type: 'string',
                 },
                 petType: {
-                  type: 'string'
+                  type: 'string',
                 },
                 favoriteFoods: {
                   type: 'array',
-                  items: 'string'
+                  items: 'string',
                 },
               },
             },
