@@ -5,8 +5,7 @@ module.exports = {
   paths: {
     "/pet/:petID": {
       GET: {
-        parameters: [
-          {
+        parameters: [{
             name: "petID",
             in: "path",
             schema: {
@@ -16,7 +15,9 @@ module.exports = {
           {
             name: "lastVisitedDate",
             in: "cookie",
-            schema: { type: "string" },
+            schema: {
+              type: "string"
+            },
           },
           {
             name: "token",
@@ -31,16 +32,19 @@ module.exports = {
         ],
       },
       PUT: {
-        parameters: [
-          {
+        parameters: [{
             name: "petID",
             in: "path",
-            schema: { type: "integer" },
+            schema: {
+              type: "integer"
+            },
           },
           {
             name: "ownerID",
             in: "path",
-            schema: { type: "integer" },
+            schema: {
+              type: "integer"
+            },
           },
         ],
         requestBody: {
@@ -48,7 +52,9 @@ module.exports = {
             schema: {
               type: "object",
               properties: {
-                name: { type: "string" },
+                name: {
+                  type: "string"
+                },
                 petType: {
                   type: "string",
                 },

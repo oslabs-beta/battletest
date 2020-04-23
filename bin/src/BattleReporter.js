@@ -13,14 +13,19 @@ const {
   EVENT_TEST_FAIL, // test fail
   EVENT_TEST_PASS, // test pass
   EVENT_SUITE_BEGIN, // suite starts
-  EVENT_SUITE_END, // suiet ends
+  EVENT_SUITE_END, // suite ends
   EVENT_TEST_BEGIN, // test begins
   EVENT_TEST_END, // test ends
   EVENT_TEST_PENDING, // test pending
 } = Mocha.Runner.constants;
 
-const { Base } = Mocha.reporters;
-// const { cursor, color } = Base;
+const {
+  Base,
+} = Mocha.reporters;
+const {
+  cursor,
+  color,
+} = Base;
 
 /**
  * @name BattleReporter
@@ -31,7 +36,9 @@ const { Base } = Mocha.reporters;
 class BattleReporter {
   constructor(runner) {
     this._indents = 0;
-    const { stats } = runner;
+    const {
+      stats,
+    } = runner;
     this.tests = [];
     this.pending = [];
     this.failures = [];
@@ -117,13 +124,13 @@ class BattleReporter {
   }
 
   /**
- * Return a plain-object representation of `test`
- * free of cyclic properties etc.
- *
- * @private
- * @param {Object} test
- * @return {Object}
- */
+   * Return a plain-object representation of `test`
+   * free of cyclic properties etc.
+   *
+   * @private
+   * @param {Object} test
+   * @return {Object}
+   */
   clean(test) {
     let err = test.err || {};
     if (err instanceof Error) {
