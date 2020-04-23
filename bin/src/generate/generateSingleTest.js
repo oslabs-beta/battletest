@@ -58,7 +58,7 @@ const resolveRequestBody = (scenario) => {
 const buildSupertest = (path, operation, scenario) => {
   let code = `
   request(serverURL)
-    .${operation.toLowerCase()}('${resolvePath(
+    .get('/pet')${operation.toLowerCase()}('${resolvePath(
     path,
     scenario
   )}')${resolveHeader(scenario)}${resolveQuery(scenario)}${resolveCookie(
