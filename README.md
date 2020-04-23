@@ -1,7 +1,6 @@
 # Battletest
 
-A CLI module for npm that auto-generates tests based on user specified parameters.
-Uses Chai, Mocha and Supertest.
+A CLI module for npm that auto-generates endpoint tests.
 
 ## Installation
 
