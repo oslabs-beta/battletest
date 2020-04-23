@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+out
+.eslintrc.json
+battletest.log
+.jsdoc.conf.json

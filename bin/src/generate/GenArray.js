@@ -1,7 +1,6 @@
 const defaultTestValues = require('./defaultTestValues.js');
 class GenArray {
     /**
-     * 
      * @param {string} itemType 
      * @param {integer} arrLength - how long the test array should be. defaults to 5. 
      */
