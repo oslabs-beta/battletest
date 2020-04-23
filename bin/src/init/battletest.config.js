@@ -62,6 +62,14 @@ module.exports = {
                   type: "array",
                   items: "string",
                 },
+                user: {
+                  type: "object",
+                  properties: {
+                    username: {
+                      type: "object"
+                    }
+                  }
+                }
               },
             },
           },
