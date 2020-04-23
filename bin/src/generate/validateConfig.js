@@ -72,13 +72,13 @@ const validateRoute = (route, context, errors) => {
     if (route[method].parameters && !Array.isArray(route[method].parameters)) {
       errors.push(`Invalid parameters array format at: ${method} ${context}`);
     } else if (route[method].parameters) {
-      route[method].parameters.forEach((param) => validateParam(param, `${method}  ${context}`, errors));
+      route[method].parameters.forEach((param) => validateParam(param, `${method}  ${context}  parameters`, errors));
     }
     // validate the request body if there is one
     if (route[method].requestBody && typeof route[method].requestBody !== 'object') {
       errors.push(`Invalid requestBody format at: ${method} ${context}`);
     } else if (route[method].requestBody) {
-      validateBody(route[method].requestBody, method + context, errors);
+      validateBody(route[method].requestBody, `${method}  ${context}  requestBody`, errors);
     }
   });
 };
@@ -125,8 +125,25 @@ const validateBody = (body, context, errors) => {
     return;
   }
   Object.keys(body).forEach((contentType) => {
-
+    // check if it is a valid HTML Content-type for each of the keys
+    // simple regex check, check if is in format */*
+    const contentRgx = /^\w+\/\w+$/;
+    if (!contentRgx.test(contentType)) {
+      errors.push(`Invalid requestBody content type '${contentType}' at: ${context}`);
+    }
+    // schema can possibly be optional, so only check it if it exists
+    if (body[contentType].schema) validateSchema(body[contentType].schema);
   });
 };
+
+/** @description recursive function to check if schema is in proper format
+ * @param {object} schema sub object of requestBody to validate
+ * @param {string} context Route that the context is in
+ * @param {array}  errors Array of errors present in the config file
+ */
+const validateSchema = (schema, context, errors) => {
+
+};
+
 
 module.exports = validateConfig;
