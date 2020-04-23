@@ -15,7 +15,6 @@ class GenArray {
             { val: new Array(200).fill('a'), descript: 'Array with length 200' },
         ];
         for (let obj of defaultTestValues) {
-            console.log(obj);
             this.vals.push({
                 val: new Array(this.arrLength).fill(obj.val),
                 descript: `Array of ${this.arrLength} ${obj.descript}`
