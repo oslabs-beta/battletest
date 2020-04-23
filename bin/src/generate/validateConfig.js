@@ -1,53 +1,32 @@
-const validate = require('validate.js');
 /** @name validateConfig
  *  @description validates a config file's object structure
  *  uses the validate.js library to validate objects
- *  @params BattleTest config object
+ *  @param config BattleTest config object
  *  @returns {array} returns a list of errors encountered when validating the config, otherwise returns undefined
  */
 
-const validateConfig = (config) => {
+function validateConfig(config) {
   // base object to accumulate the errors
   const errors = [];
   // describe constraints for base level
-  const baseConstraints = {
-    serverLocation: {
-      presence: true,
-      type: 'string',
-    },
-    serverURL: {
-      presence: true,
-      type: 'string',
-      url: {
-        schemes: ['.+'],
-        allowLocal: true,
-      },
-    },
-    authorization_cookie: {
-
-    },
-    paths: {
-      presence: true,
-      type: 'object',
-    },
-  };
-  // describes constraints at the parameter level
-  const baseValid = validate(config, baseConstraints, { format: 'flat' });
-  // if an object is returned, there are errors
-  if (baseValid) errors.push(...baseValid);
+  if (!config.serverLocation) errors.push(`Invalid server location: ${config.serverLocation}`);
+  if (!config.serverURL) errors.push(`Invalid server URL: ${config.serverURL}`);
+  if (typeof config.paths !== 'object') {
+    errors.push('Invalid paths object');
+    return;
+  }
 
   // Next test each path to see if it in the proper format
   Object.keys(config.paths).forEach((path) => {
     // regex validation for paths e.g. /path/to/endpoint
-    const errPath = validate.single(path,
-      { format: /^(\/:?\w+)*\/?$/ });
-    if (errPath) errors.push(`${path} is not a valid route.`);
+    const routeRgx = /^(\/:?\w+)*\/?$/;
+    if (!routeRgx.test(path)) errors.push(`Invalid route: ${path}`);
     // iterate through the path methods by invoking validateRoute
     validateRoute(config.paths[path], path, errors);
     // if there are errors, return the array, otherwise return undefined
   });
   if (errors.length) return errors;
-};
+}
 
 // helper functions
 // takes in a route sub object
@@ -65,9 +44,8 @@ const validateRoute = (route, context, errors) => {
   }
   Object.keys(route).forEach((method) => {
     // validate that the method is a valid HTTP request method
-    const errMethod = validate.single(method,
-      { format: /^(GET|POST|PATCH|PUT|HEAD|DELETE|OPTIONS)$/i });
-    if (errMethod) errors.push(`${method} is not a valid HTTP request at route: ${context}`);
+    const methodRgx = /^(GET|POST|PATCH|PUT|HEAD|DELETE|OPTIONS)$/;
+    if (!methodRgx.test(method)) errors.push(`Invalid HTTP request '${method}' at route: ${context}`);
     // validate the parameters and requestBody objects
     if (route[method].parameters && !Array.isArray(route[method].parameters)) {
       errors.push(`Invalid parameters array format at: ${method} ${context}`);
@@ -132,7 +110,7 @@ const validateBody = (body, context, errors) => {
       errors.push(`Invalid requestBody content type '${contentType}' at: ${context}`);
     }
     // schema can possibly be optional, so only check it if it exists
-    if (body[contentType].schema) validateSchema(body[contentType].schema);
+    if (body[contentType].schema) validateSchema(body[contentType].schema, `${context}  ${contentType}`, errors);
   });
 };
 
@@ -142,7 +120,28 @@ const validateBody = (body, context, errors) => {
  * @param {array}  errors Array of errors present in the config file
  */
 const validateSchema = (schema, context, errors) => {
-
+  const typeRgx = /^integer|number|string|boolean|object|array$/;
+  if (!typeRgx.test(schema.type)) {
+    errors.push(`Invalid type '${schema.type}' at: ${context}`);
+  }
+  if (schema.type === 'array') {
+    if (!schema.items || typeof schema.items !== 'object') {
+      errors.push(`Invalid array items property at: ${context}`);
+    } else {
+      validateSchema(schema.items, context, errors);
+    }
+  } else if (schema.type === 'object') {
+    if (schema.properties && typeof schema.properties !== 'object') {
+      errors.push(`Invalid schema object properties format at: ${context}`);
+      return;
+    }
+    if (!schema.properties) return;
+    // iterate through each of the properties, recursively calling
+    // validateSchema for each sub object
+    Object.keys(schema.properties).forEach((prop) => {
+      validateSchema(schema.properties[prop], `${context}  ${prop}`, errors);
+    });
+  }
 };
 
 
