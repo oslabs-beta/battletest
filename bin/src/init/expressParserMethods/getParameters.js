@@ -1,34 +1,30 @@
 const {
   buildBodyProp
 } = require('./buildBodyProp');
-module.exports = {
-  getParameters(fullReq) {
-    //const method = routeInfo[endpoint].method.toUpperCase();
-    const reqBody = {
-      user: {
-        type: "object",
-        properties: {
-          username: { type: null },
-          userid: { type: null }
-        }
-      }
-    };
-    const parameters = [];
-    const paramSet = new Set(); //store values as ref[0] + ref[1];
 
-    // fullReq = [body, user, username]
-    //           [body, user, userid]
-    //           [headers, username]
+function getParameters(fullReq) {
+  //const method = routeInfo[endpoint].method.toUpperCase();
+  const reqBodyProp = {};
+  const parameters = [];
+  const paramSet = new Set(); //store values as ref[0] + ref[1];
 
-    for (let ref of fullReq) {    // ref = [body, user, username]
-      const refStr = ref.join(""); // "bodyuserusername"
-      if (paramSet.has(refStr)) continue; 
+  console.log(fullReq)
+  for (let ref of fullReq) {
+
+    if (ref[ref.length - 1] === 'body') {
+      ref.unshift(ref.pop());
+    }
+    console.log(ref)
+    if (ref.length > 1) {
+
+      const refStr = ref.join(""); //???
+      if (paramSet.has(refStr)) continue;
       else paramSet.add(refStr);
 
       // ref = [body, user, username]
       switch (ref[0]) {
         case "body":
-          reqBodyProp = buildBodyProp(ref.slice(1), reqBody);
+          buildBodyProp(ref.slice(1), reqBodyProp);
           break;
         case "headers":
           parameters.push({
@@ -70,9 +66,24 @@ module.exports = {
           break;
       }
     }
-    return {
-      reqBodyProp,
-      parameters
-    }
+
+  }
+  return {
+    parameters,
+    reqBodyProp
   }
 }
+
+// const fullReq = [
+//   ['params', 'id'],
+//   ['params', 'id'],
+//   ['user', 'body'],
+//   ['body', 'user', 'userInfo']
+// ];
+
+// console.log(getParameters(fullReq));
+
+
+module.exports = {
+  getParameters
+};
