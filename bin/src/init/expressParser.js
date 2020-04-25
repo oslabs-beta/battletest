@@ -19,20 +19,23 @@ function expressParser(server) {
   const routesArray = server._router.stack.filter(
     (routes) => routes.name === "bound dispatch"
   );
-  // by invoking routeData we create the routeInfo object that will have all the information the config file needs to generate tests
   const routeInfo = routeData(routesArray);
+  return getReqInfo(routeInfo);
 
-  return JSON.stringify(getReqInfo(routeInfo), null, 2);
 }
 
-
-
-module.exports = (server) => {
-  return expressParser(server);
-}
 
 
 const routeI = expressParser(Server);
 console.log(routeI)
-// console.log(JSON.stringify(routeI, null, 2))
-console.log(JSON.stringify(getReqInfo(routeI), null, 2))
+
+
+
+
+
+
+
+
+// module.exports = (server) => {
+//   return expressParser(server);
+// };
