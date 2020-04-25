@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable class-methods-use-this */
 const Mocha = require('mocha');
 const chalk = require('chalk');
 const fs = require('fs');
@@ -17,11 +20,11 @@ const {
 } = Mocha.Runner.constants;
 
 const {
-  Base
+  Base,
 } = Mocha.reporters;
 const {
   cursor,
-  color
+  color,
 } = Base;
 
 /**
@@ -34,7 +37,7 @@ class BattleReporter {
   constructor(runner) {
     this._indents = 0;
     const {
-      stats
+      stats,
     } = runner;
     this.tests = [];
     this.pending = [];
@@ -57,24 +60,23 @@ class BattleReporter {
       })
       .on(EVENT_TEST_END, (test) => {
         this.tests.push(test);
-        // Write to JSON
       })
       .on(EVENT_TEST_PASS, (test) => {
         this.passes.push(test);
-        const fmt = this.indent() +
-          chalk.green.inverse('PASS') +
-          chalk.green('  %s') +
-          chalk.yellow(' (%dms)');
+        const fmt = this.indent()
+          + chalk.green.inverse('PASS')
+          + chalk.green('  %s')
+          + chalk.yellow(' (%dms)');
         // Test#fullTitle() returns the suite name(s)
         // prepended to the test title
         console.log(fmt, test.title, test.duration);
       })
       .on(EVENT_TEST_FAIL, (test, err) => {
         this.failures.push(test);
-        const fmt = this.indent() +
-          chalk.red.inverse('FAIL') +
-          chalk.red('  %s') +
-          chalk.yellow(' (%dms)');
+        const fmt = this.indent()
+          + chalk.red.inverse('FAIL')
+          + chalk.red('  %s')
+          + chalk.yellow(' (%dms)');
         // Test#fullTitle() returns the suite name(s)
         // prepended to the test title
         console.log(fmt, test.title, test.duration);

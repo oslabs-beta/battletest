@@ -1,22 +1,20 @@
-/** Class representing a random generator */
-class RandGen {
-  /**
-  * Generator for certain primitive data type.
-  * @param {string} type - type of primitive data to randomly generate. 
-  * @param {string} [items] - data type of elements in an array to randomly generate.
-  */
+/* eslint-disable class-methods-use-this */
+/** @name RandGen
+ * @deprecated
+ * @constructor takes in the type of the primitive value type to generate
+ */
 
+class RandGen {
   constructor(type, items) {
     this.type = type; // data type
     this.items = items; // if array, data type of the elements of the array
-    this.func = this.switcheroo(this.type); // function to be used to generate values
+    this.func = this.switcheroo(this.type); // function used to generate values
     this.ind = 0;
   }
 
-  /** 
-  * @param {boolean} ran Option to generate a true random value with no descript
-  * @returns {string} random string of size n
-  */
+  /** @param {boolean} ran Option to generate a true random value with no descript
+     * @returns {string} random string of size n
+     */
   str(ran) {
     const strs = [
       { val: 'string', descript: 'Normal string' },

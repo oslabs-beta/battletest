@@ -1,6 +1,6 @@
 /**
  * @name src/generate/generateSingleTest
- *
+ * @description The upper level function "generateSingleTest" calls "buildSupertest", which in turn calls other functions contained in this section, that each provide a particular section of a single testing block.  
  */
 const resolvePath = (path, scenario) => {
   if (!scenario.path) {
@@ -52,13 +52,14 @@ const resolveRequestBody = (scenario) => {
     return `.send()`;
   }
   const contentType = Object.keys(scenario.requestBody)[0];
+  console.log(scenario.requestBody[contentType]["body"]);
   return `\n    .type('${contentType}')\n    .send(${JSON.stringify(scenario.requestBody[contentType]["body"])})`;
 };
 
 const buildSupertest = (path, operation, scenario) => {
   let code = `
   request(serverURL)
-    .get('/pet')${operation.toLowerCase()}('${resolvePath(
+    .${operation.toLowerCase()}('${resolvePath(
     path,
     scenario
   )}')${resolveHeader(scenario)}${resolveQuery(scenario)}${resolveCookie(
@@ -95,23 +96,5 @@ const generateSingleTest = (path, operation, scenario, testname) => {
   });
 })`;
 };
-
-// const body = {
-//   name: "knzh9qeofx",
-//   petType: "j997urebie",
-//   favoriteFoods: [
-//     "andteftlio",
-//     "x55e0gsx5w",
-//     "zu9pd8g3lx",
-//     "31j87j3gt4",
-//     "pa06y5fisg",
-//   ],
-// };
-// const scenario = {
-//   path: { petID: 5, ownerID: 3 },
-//   requestBody: { "application/json": { body: body } },
-// };
-
-//console.log(generateSingleTest("/pet/:petID/:ownerID", "PUT", scenario));
 
 module.exports = generateSingleTest;

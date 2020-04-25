@@ -3,4 +3,4 @@ package-lock.json
 out
 .eslintrc.json
 battletest.log
-doc
+.jsdoc.conf.json

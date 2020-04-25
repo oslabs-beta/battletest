@@ -1,6 +1,6 @@
 const {
-  buildReqBodyProp
-} = require('./buildReqBodyProp');
+  buildBodyProp
+} = require('./buildBodyProp');
 
 function getParameters(fullReq) {
   //const method = routeInfo[endpoint].method.toUpperCase();
@@ -24,10 +24,7 @@ function getParameters(fullReq) {
       // ref = [body, user, username]
       switch (ref[0]) {
         case "body":
-          // reqBodyProp = buildReqBodyProp(ref.slice(1));
-          reqBodyProp[ref[1]] = {
-            type: null
-          };
+          buildBodyProp(ref.slice(1), reqBodyProp);
           break;
         case "headers":
           parameters.push({

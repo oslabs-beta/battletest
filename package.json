@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "battletest": "battletest"
+    "doc": "./node_modules/jsdoc/jsdoc.js -c ./.jsdoc.conf.json"
   },
   "repository": {
     "type": "git",

@@ -5,32 +5,38 @@
  * @returns {null} saves test files to __battletest__
  */
 
-const path = require("path");
-const requireUncached = require("../util/requireUncached.js");
 const generateFolders = require("../src/generate/generateFolders.js");
 const generateTestSetup = require("../src/generate/generateTestSetup.js");
 const generateTestFile = require("../src/generate/generateTestFile.js");
+const validateConfig = require("../src/generate/validateConfig.js");
 
-const config = requireUncached(
-  path.resolve(process.cwd(), "battletest.config.js")
-);
+const generate = (config, ...args) => {
+  // check if the config file has been properly formatted
+  const validationErrors = validateConfig(config);
+  if (validationErrors.length > 0) {
+    validationErrors.forEach(error => console.log(error));
+    return;
+  }
 
-const generate = (...args) => {
+  let targetPaths = Object.keys(config.paths);
+
   // if user provided paths, check that paths do exist in config
   if (args.length > 0) {
-    const temp = Object.keys(config.paths);
-    const notInConfig = args.filter((path) => !temp.includes(path));
-    if (notInConfig) {
+    const notInConfig = args.filter(path => !targetPaths.includes(path));
+    if (notInConfig.length > 0) {
       console.error(
         `battletest: following paths were not found in battletest.config.js: ${notInConfig}.`
       );
       return;
     }
+    targetPaths = args;
   }
-  generateFolders();
-  for (let p of Object.keys(config.paths)) {
+
+  generateFolders(); // add __battletest__ and __result__ folders if they don't currently exist
+
+  for (let p of targetPaths) {
     for (let operation of Object.keys(config.paths[p])) {
-      generateTestFile(p, operation, config.paths[p][operation]);
+      generateTestFile(p, operation, config.paths[p][operation], );
     }
   }
 
