@@ -1,6 +1,6 @@
 const {
   getParameters
-} = require('./getParameteres');
+} = require('./getParameters');
 module.exports = {
 
   getReqInfo(routeInfo) {
@@ -42,7 +42,7 @@ module.exports = {
           "application/json": {
             schema: {
               type: "object",
-              properties: reqBodyProp,
+              properties : reqBodyProp,
             },
           },
         };
