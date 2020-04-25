@@ -20,14 +20,14 @@ function expressParser(server) {
     (routes) => routes.name === "bound dispatch"
   );
   const routeInfo = routeData(routesArray);
-  return getReqInfo(routeInfo);
 
+  return getReqInfo(routeInfo);
 }
 
 
 
 const routeI = expressParser(Server);
-console.log(routeI)
+console.log(JSON.stringify(routeI, null, 2))
 
 
 
