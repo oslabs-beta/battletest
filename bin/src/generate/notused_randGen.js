@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /** @name RandGen
+ * @deprecated
  * @constructor takes in the type of the primitive value type to generate
  */
 
