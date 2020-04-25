@@ -17,10 +17,12 @@ creates a new `battletest.config.js` in your project's root directory.
 
 `$ battletest generate`
 
-will comb the newly created `battletest.config.js` and generate test files under `test/__battletest__` 
+will parse the newly created `battletest.config.js` and generate test files under `test/__battletest__` in your project's directory
 
 `$ battletest start`
 
-runs the generated tests and outputs the results in the terminal. Additional logs can be found under `test/__battletest__/__result__`
+runs the generated tests via mocha and outputs the results in the terminal. Additional logs can be found under `test/__battletest__/__result__`
+
+
 
 

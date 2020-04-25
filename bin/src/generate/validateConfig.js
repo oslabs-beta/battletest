@@ -19,7 +19,7 @@ function validateConfig(config) {
   // Next test each path to see if it in the proper format
   Object.keys(config.paths).forEach((path) => {
     // regex validation for paths e.g. /path/to/endpoint
-    const routeRgx = /^(\/:?\w+)*\/?$/;
+    const routeRgx = /^(\/\{?:?\w+\}?)*\/?$/;
     if (!routeRgx.test(path)) errors.push(`Invalid route: ${path}`);
     // iterate through the path methods by invoking validateRoute
     validateRoute(config.paths[path], path, errors);
@@ -44,7 +44,7 @@ const validateRoute = (route, context, errors) => {
   }
   Object.keys(route).forEach((method) => {
     // validate that the method is a valid HTTP request method
-    const methodRgx = /^(GET|POST|PATCH|PUT|HEAD|DELETE|OPTIONS)$/;
+    const methodRgx = /^(GET|POST|PATCH|PUT|HEAD|DELETE|OPTIONS)$/i;
     if (!methodRgx.test(method)) errors.push(`Invalid HTTP request '${method}' at route: ${context}`);
     // validate the parameters and requestBody objects
     if (route[method].parameters && !Array.isArray(route[method].parameters)) {
@@ -107,7 +107,7 @@ const validateBody = (body, context, errors) => {
     // simple regex check, check if is in format */*
     // if content type is of xml or json, then we need schema
     const contentRgx = /(application\/(json|xml))|(text\/plain)/;
-    if(!contentRgx.test(contentType)){
+    if (!contentRgx.test(contentType)) {
       errors.push(`Invalid contentType ${contentType} at: ${context}`);
     }
     // schema can possibly be optional, so only check it if it exists
