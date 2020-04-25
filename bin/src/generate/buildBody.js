@@ -1,5 +1,5 @@
-const RandGen = require("./randGen.js");
-
+const RandGen = require('./randGen.js');
+const GenArray = require('./GenArray.js');
 const buildBody = (propObj, baseObj, genObj, propName) => {
   //if the type is primitive
   if (propObj.type !== "object" && propObj.type !== "array") {
@@ -11,7 +11,7 @@ const buildBody = (propObj, baseObj, genObj, propName) => {
   baseObj[propName] = {};
   genObj[propName] = {};
   if (propObj.type === "array") {
-    genObj[propName] = new RandGen(propObj.type, propObj.items);
+    genObj[propName] = new GenArray(propObj.items);
     const { val } = genObj[propName].next();
     baseObj[propName] = val;
     return;
@@ -48,11 +48,7 @@ const buildBody = (propObj, baseObj, genObj, propName) => {
 // };
 
 // const baseObj = {};
-
 // const genObj = {};
-
 // buildBody(propObj, baseObj, genObj, "body");
 
-// console.log(baseObj);
-// console.log(genObj);
 module.exports = buildBody;

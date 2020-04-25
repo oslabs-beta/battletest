@@ -25,7 +25,7 @@ function validateConfig(config) {
     validateRoute(config.paths[path], path, errors);
     // if there are errors, return the array, otherwise return undefined
   });
-  if (errors.length) return errors;
+  return errors;
 }
 
 // helper functions
@@ -33,9 +33,9 @@ function validateConfig(config) {
 // e.g: {GET : {}, POST: {}}
 
 /**
- * @param {object} route sub object of config with methods as properties e.g.: {GET : {}, POST: {}}
- * @param {string} context Route that the context is in
- * @param {array}  errors Array of errors present in the config file
+ * @param {object} route - sub object of config with methods as properties e.g.: {GET : {}, POST: {}}
+ * @param {string} context - Route that the context is in
+ * @param {array}  errors - Array of errors present in the config file
  */
 const validateRoute = (route, context, errors) => {
   if (typeof route !== 'object') {
@@ -62,9 +62,9 @@ const validateRoute = (route, context, errors) => {
 };
 
 /**
- * @param {object} param object element of the parameters array e.g.: {name, in, schema}
- * @param {string} context Route that the context is in
- * @param {array}  errors Array of errors present in the config file
+ * @param {object} param - object element of the parameters array e.g.: {name, in, schema}
+ * @param {string} context - Route that the context is in
+ * @param {array}  errors - Array of errors present in the config file
  */
 const validateParam = (param, context, errors) => {
   // checking if param is an object
@@ -91,9 +91,9 @@ const validateParam = (param, context, errors) => {
 };
 
 /**
- * @param {object} body requestBody object of the method object e.g.: {Content-Type:{schema}}
- * @param {string} context Route that the context is in
- * @param {array}  errors Array of errors present in the config file
+ * @param {object} body - requestBody object of the method object e.g.: {Content-Type:{schema}}
+ * @param {string} context - Route that the context is in
+ * @param {array}  errors - Array of errors present in the config file
  */
 const validateBody = (body, context, errors) => {
   // Primarily focus on application/json
@@ -105,9 +105,10 @@ const validateBody = (body, context, errors) => {
   Object.keys(body).forEach((contentType) => {
     // check if it is a valid HTML Content-type for each of the keys
     // simple regex check, check if is in format */*
-    const contentRgx = /^\w+\/\w+$/;
-    if (!contentRgx.test(contentType)) {
-      errors.push(`Invalid requestBody content type '${contentType}' at: ${context}`);
+    // if content type is of xml or json, then we need schema
+    const contentRgx = /(application\/(json|xml))|(text\/plain)/;
+    if(!contentRgx.test(contentType)){
+      errors.push(`Invalid contentType ${contentType} at: ${context}`);
     }
     // schema can possibly be optional, so only check it if it exists
     if (body[contentType].schema) validateSchema(body[contentType].schema, `${context}  ${contentType}`, errors);
@@ -115,9 +116,9 @@ const validateBody = (body, context, errors) => {
 };
 
 /** @description recursive function to check if schema is in proper format
- * @param {object} schema sub object of requestBody to validate
- * @param {string} context Route that the context is in
- * @param {array}  errors Array of errors present in the config file
+ * @param {object} schema - sub object of requestBody to validate
+ * @param {string} context - Route that the context is in
+ * @param {array}  errors - Array of errors present in the config file
  */
 const validateSchema = (schema, context, errors) => {
   const typeRgx = /^integer|number|string|boolean|object|array$/;

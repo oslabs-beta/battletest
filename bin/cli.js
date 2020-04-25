@@ -37,9 +37,13 @@ switch (cmd) {
     require("./cmds/init")(configInput);
     break;
   case "generate":
-    // TO DO: check if this works!
+    const path = require("path");
+    const requireUncached = require("./util/requireUncached.js");
+    const config = requireUncached(
+      path.resolve(process.cwd(), "battletest.config.js")
+    );
     const paths = args.slice(1);
-    require("./cmds/generate")(...paths);
+    require("./cmds/generate")(config, ...paths);
     break;
   case "start":
     const testFiles = args.slice(1);

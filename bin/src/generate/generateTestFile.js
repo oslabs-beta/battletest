@@ -4,9 +4,14 @@ const saveTestFile = require("./saveTestFile.js");
 const buildTestTitle = require("./buildTestTitle.js");
 const buildBody = require("./buildBody.js");
 const RandGen = require("./randGen.js");
+const GenArray = require("./GenArray.js");
 
-// '/pet' '/user'
-// 'GET' 'PUT'
+/**
+ * @description This outputs a test file for a specified operation on a specified path (ex. GET operation on "/pet").  Each test file contains supertests for many test cases. Each test
+ * @param {String} path 
+ * @param {*} operation 
+ * @param {*} operationObject 
+ */
 function generateTestFile(path, operation, operationObject) {
   const baseScenario = {};
   const generators = {};
@@ -24,23 +29,23 @@ function generateTestFile(path, operation, operationObject) {
       baseScenario[param.in][param.name] = val; // initially, normal input
     });
   }
-
   // fill out base scenario & generators for REQUESTBODY
   if (operationObject.hasOwnProperty('requestBody')) {
-    baseScenario["requestBody"] = {};
-    generators["requestBody"] = {};
-
-    Object.keys(operationObject.requestBody).forEach((contentType) => {
-      baseScenario["requestBody"][contentType] = {};
-      generators["requestBody"][contentType] = {};
+    baseScenario.requestBody = {};
+    generators.requestBody = {};
+    Object.keys(operationObject["requestBody"]).forEach((contentType) => {
+      baseScenario.requestBody[contentType] = {};
+      generators.requestBody[contentType] = {};
       if (contentType === "text/plain") {
         // TO DO: same as 7 - 13; make into a module
+        if (!operationObject["requestBody"][contentType].schema) {
+        }
       } else if (
         contentType === "application/json" ||
         contentType === "application/xml"
       ) {
         buildBody(
-          (propObj = operationObject.requestBody[contentType].schema),
+          (propObj = operationObject["requestBody"][contentType].schema),
           (baseObj = baseScenario["requestBody"][contentType]),
           (genObj = generators["requestBody"][contentType]),
           (propName = "body")
@@ -48,9 +53,9 @@ function generateTestFile(path, operation, operationObject) {
       }
     }); 
   }
+
   //BASE SCENARIO
   testCode += generateSingleTest(path, operation, baseScenario, 'Base Scenario');
-
   //GENERATING RANDOM PARAMETER FIELDS
   if (operationObject.hasOwnProperty('parameters')) {
     for (let fieldKey in generators) {
@@ -66,16 +71,9 @@ function generateTestFile(path, operation, operationObject) {
       }
     }
   }
-  if (operationObject.hasOwnProperty('requestBody')) {
-    const contentType = Object.keys(generators.requestBody)[0];
-    skimBody(generators.requestBody[contentType], (mapArr = [contentType]));
-  } 
-  
-  const testFile = generateDescribe(path, operation, testCode);
-  saveTestFile(path, operation, testFile);
 
   function skimBody(genObj, mapArr) {
-    if (genObj instanceof RandGen) {
+    if (genObj instanceof RandGen || genObj instanceof GenArray) {
       const scenario = JSON.parse(JSON.stringify(baseScenario));
       const lastKey = mapArr.pop();
       const target =
@@ -85,8 +83,9 @@ function generateTestFile(path, operation, operationObject) {
               (obj, key) =>
                 obj && obj[key] !== "undefined" ? obj[key] : undefined,
               scenario.requestBody
-            ); // scenario['family']['mom']
+            ); 
       for (let i = 0; i < 5; i++) {
+        console.log(genObj)
         const { val, descript } = genObj.next();
         target[lastKey] = val;
         testCode += generateSingleTest(path, operation, scenario, buildTestTitle.requestBody([...mapArr, lastKey], descript)); 
@@ -98,6 +97,14 @@ function generateTestFile(path, operation, operationObject) {
       skimBody(genObj[key], [...mapArr, key]);
     }
   };
+  
+  if (operationObject.hasOwnProperty('requestBody')) {
+    const contentType = Object.keys(generators.requestBody)[0];
+    skimBody(generators.requestBody[contentType], (mapArr = [contentType]));
+  } 
+
+  const testFile = generateDescribe(path, operation, testCode);
+  saveTestFile(path, operation, testFile);
 }
 
 module.exports = generateTestFile;

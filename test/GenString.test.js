@@ -1,7 +1,7 @@
 const expect = require('chai').expect;
 const GenString = require('../bin/src/generate/GenString.js');
 
-describe('GenString', () => {
+xdescribe('GenString', () => {
     let instance;
     before(() => {
         instance = new GenString();        
