@@ -14,7 +14,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -36,12 +36,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"2^53 - 1"}}', function(done){
+    it('{"path":{"petID":"0"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/9007199254740991').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/0').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -63,12 +63,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"-(2^53 - 1)"}}', function(done){
+    it('{"path":{"petID":"String(random number)"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/-9007199254740991').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -90,12 +90,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"1.79e+308"}}', function(done){
+    it('{"path":{"petID":"undefined"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/1.7976931348623157e+308').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/undefined').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -117,12 +117,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"positive infinity"}}', function(done){
+    it('{"path":{"petID":"null"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/Infinity').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/null').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -144,12 +144,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"negative infinity"}}', function(done){
+    it('{"path":{"petID":"boolean_false"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/-Infinity').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/false').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -171,12 +171,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"cookie":{"lastVisitedDate":"Extremely long string"}}', function(done){
+    it('{"cookie":{"lastVisitedDate":"0"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -198,12 +198,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"cookie":{"lastVisitedDate":"Postgres SQL injection"}}', function(done){
+    it('{"cookie":{"lastVisitedDate":"String(random number)"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -225,12 +225,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"cookie":{"lastVisitedDate":"Negative number"}}', function(done){
+    it('{"cookie":{"lastVisitedDate":"undefined"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -252,12 +252,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"cookie":{"lastVisitedDate":"positive infinity"}}', function(done){
+    it('{"cookie":{"lastVisitedDate":"null"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -279,12 +279,12 @@ describe('/pet/:petID_GET', function() {
       done(err);
   });
 })
-    it('{"cookie":{"lastVisitedDate":"random string"}}', function(done){
+    it('{"cookie":{"lastVisitedDate":"boolean_false"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/5').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/1').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();

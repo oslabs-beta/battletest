@@ -3,8 +3,16 @@ const generateDescribe = require("./generateDescribe.js");
 const saveTestFile = require("./saveTestFile.js");
 const buildTestTitle = require("./buildTestTitle.js");
 const buildBody = require("./buildBody.js");
-const RandGen = require("./randGen.js");
 const GenArray = require("./GenArray.js");
+const GenString = require("./GenString.js");
+const GenBoolean = require("./GenBoolean.js");
+const GenNumber = require("./GenNumber.js");
+const randGen = {
+  'string': GenString,
+  'boolean': GenBoolean,
+  'number': GenNumber,
+  'integer': GenNumber,
+}
 
 /**
  * @description This outputs a test file for a specified operation on a specified path (ex. GET operation on "/pet").  Each test file contains supertests for many test cases. Each test
@@ -24,7 +32,7 @@ function generateTestFile(path, operation, operationObject) {
         baseScenario[param.in] = {};
         generators[param.in] = {};
       }
-      generators[param.in][param.name] = new RandGen(param.schema.type);
+      generators[param.in][param.name] = new randGen[param.schema.type];
       const { val, descript } = generators[param.in][param.name].next();
       baseScenario[param.in][param.name] = val; // initially, normal input
     });
@@ -73,7 +81,7 @@ function generateTestFile(path, operation, operationObject) {
   }
 
   function skimBody(genObj, mapArr) {
-    if (genObj instanceof RandGen || genObj instanceof GenArray) {
+    if (genObj instanceof GenArray || genObj instanceof GenBoolean || genObj instanceof GenString || genObj instanceof GenNumber) {
       const scenario = JSON.parse(JSON.stringify(baseScenario));
       const lastKey = mapArr.pop();
       const target =

@@ -14,9 +14,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -38,14 +38,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"2^53 - 1"}}', function(done){
+    it('{"path":{"petID":"0"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/9007199254740991')
+    .put('/pet/0')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -67,14 +67,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"-(2^53 - 1)"}}', function(done){
+    it('{"path":{"petID":"String(random number)"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/-9007199254740991')
+    .put('/pet/1')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -96,14 +96,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"1.79e+308"}}', function(done){
+    it('{"path":{"petID":"undefined"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/1.7976931348623157e+308')
+    .put('/pet/undefined')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -125,14 +125,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"positive infinity"}}', function(done){
+    it('{"path":{"petID":"null"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/Infinity')
+    .put('/pet/null')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -154,14 +154,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"path":{"petID":"negative infinity"}}', function(done){
+    it('{"path":{"petID":"boolean_false"}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/-Infinity')
+    .put('/pet/false')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -183,14 +183,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"name":"Extremely long string"}}}', function(done){
+    it('{"application/json":{"body":{"name":"0"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"****************************************************************************************************************************************************************************************************************************************************************","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":0,"petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -212,14 +212,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"name":"Postgres SQL injection"}}}', function(done){
+    it('{"application/json":{"body":{"name":"String(random number)"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"SELECT * FROM information_schema.tables","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"1","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -241,14 +241,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"name":"Negative number"}}}', function(done){
+    it('{"application/json":{"body":{"name":"undefined"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":-20,"petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -270,14 +270,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"name":"positive infinity"}}}', function(done){
+    it('{"application/json":{"body":{"name":"null"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":null,"petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":null,"petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -299,14 +299,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"name":"random string"}}}', function(done){
+    it('{"application/json":{"body":{"name":"boolean_false"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"vgc9zm72rt","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":false,"petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -328,14 +328,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"petType":"Extremely long string"}}}', function(done){
+    it('{"application/json":{"body":{"petType":"0"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"****************************************************************************************************************************************************************************************************************************************************************","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":0,"favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -357,14 +357,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"petType":"Postgres SQL injection"}}}', function(done){
+    it('{"application/json":{"body":{"petType":"String(random number)"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"SELECT * FROM information_schema.tables","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"1","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -386,14 +386,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"petType":"Negative number"}}}', function(done){
+    it('{"application/json":{"body":{"petType":"undefined"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":-20,"favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -415,14 +415,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"petType":"positive infinity"}}}', function(done){
+    it('{"application/json":{"body":{"petType":"null"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":null,"favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":null,"favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -444,14 +444,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"petType":"random string"}}}', function(done){
+    it('{"application/json":{"body":{"petType":"boolean_false"}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"mi6f66fo8q","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":false,"favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -478,9 +478,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":0,"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":0,"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -507,9 +507,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":"6","family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":"1","family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -536,9 +536,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -565,9 +565,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":null,"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":null,"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -594,9 +594,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":false,"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":false,"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -618,14 +618,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"mom":"Extremely long string"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"mom":"0"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"****************************************************************************************************************************************************************************************************************************************************************","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":0,"dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -647,14 +647,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"mom":"Postgres SQL injection"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"mom":"String(random number)"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"SELECT * FROM information_schema.tables","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"1","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -676,14 +676,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"mom":"Negative number"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"mom":"undefined"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":-20,"dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -705,14 +705,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"mom":"positive infinity"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"mom":"null"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":null,"dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":null,"dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -734,14 +734,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"mom":"random string"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"mom":"boolean_false"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"7ma9v0pmmq","dad":"string","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":false,"dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -763,14 +763,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"dad":"Extremely long string"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"dad":"0"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"****************************************************************************************************************************************************************************************************************************************************************","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":0,"siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -792,14 +792,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"dad":"Postgres SQL injection"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"dad":"String(random number)"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"SELECT * FROM information_schema.tables","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"1","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -821,14 +821,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"dad":"Negative number"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"dad":"undefined"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":-20,"siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -850,14 +850,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"dad":"positive infinity"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"dad":"null"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":null,"siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":null,"siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -879,14 +879,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"dad":"random string"}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"dad":"boolean_false"}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"n8eb390dhj","siblings":{"sisters":"string","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":false,"siblings":{"sisters":"n1fvdvrlp3","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -908,14 +908,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"Extremely long string"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"0"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"****************************************************************************************************************************************************************************************************************************************************************","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":0,"brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -937,14 +937,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"Postgres SQL injection"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"String(random number)"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"SELECT * FROM information_schema.tables","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"1","brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -966,14 +966,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"Negative number"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"undefined"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":-20,"brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -995,14 +995,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"positive infinity"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"null"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":null,"brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":null,"brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1024,14 +1024,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"random string"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"sisters":"boolean_false"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"9hiizydayp","brothers":"string"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":false,"brothers":"sfc6msrv65"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1053,14 +1053,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"Extremely long string"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"0"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"****************************************************************************************************************************************************************************************************************************************************************"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":0}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1082,14 +1082,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"Postgres SQL injection"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"String(random number)"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"SELECT * FROM information_schema.tables"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":"1"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1111,14 +1111,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"Negative number"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"undefined"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":-20}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1140,14 +1140,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"positive infinity"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"null"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":null}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":null}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1169,14 +1169,14 @@ describe('/pet/:petID_PUT', function() {
       done(err);
   });
 })
-    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"random string"}}}}}', function(done){
+    it('{"application/json":{"body":{"family":{"siblings":{"brothers":"boolean_false"}}}}}', function(done){
         let endTime;
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/8')
     .type('application/json')
-    .send({"name":"string","petType":"string","favoriteFoods":["nh121n4g4j","kwq2uhnhml","6gski41huf","tf4x1yq1c","hvg2gvmn4f"],"family":{"mom":"string","dad":"string","siblings":{"sisters":"string","brothers":"vxxof9kv71"}}})
+    .send({"name":"110r3o1r32","petType":"7fvyq9cvg8","favoriteFoods":["628mx3stz9","wmnx0hn9yi","28q1b64kyf","rtuhtb2x2v","zbsbfo9x1x"],"family":{"mom":"susp28uy67","dad":"unry3wwi6n","siblings":{"sisters":"n1fvdvrlp3","brothers":false}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
