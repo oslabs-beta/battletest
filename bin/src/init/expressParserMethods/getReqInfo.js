@@ -1,29 +1,29 @@
 const {
-  getParameters
+  getParameters,
 } = require('./getParameters');
 
 function getReqInfo(routeInfo) {
-  //console.log(routeInfo);
+  // console.log(routeInfo);
   const paths = {};
   // look at each endpoint in routeInfo
-  for (let endpoint in routeInfo) {
+  for (const endpoint in routeInfo) {
     // console.log(endpoint.method);
 
 
-    let funcDef = routeInfo[endpoint].middleware;
+    const funcDef = routeInfo[endpoint].middleware;
     // console.log(funcDef)
-    const regex = /\{\s*.+\s*\}\s*\=\s*req\.[A-Za-z]+|req\.[A-Za-z.]+/g;
+    const regex = /\{\s*.+\s*\}\s*\=\s*req\.[\w.]+|req\.[\w.]+/g;
     // by using regular expression check what comes after "req." to save it as req's location
-    const regEx = /\w*[a-zA-Z]\w*/g;
+    const regEx = /\w*\w\w*/g;
 
-    let fullReq = [];
-    funcDef.forEach(string => { // fullReq.push(string.match(regex))
+    const fullReq = [];
+    funcDef.forEach((string) => { // fullReq.push(string.match(regex))
       if (string !== undefined) {
         matchedString = string.match(regex);
       }
 
       if (matchedString !== null) {
-        matchedString.forEach(newString => fullReq.push(newString.match(regEx)));
+        matchedString.forEach((newString) => fullReq.push(newString.match(regEx)));
       }
     });
 
@@ -34,33 +34,35 @@ function getReqInfo(routeInfo) {
         }
       }
     }
-    console.log('fullReq in reqInfo', fullReq)
+    console.log('fullReq in reqInfo', fullReq);
 
     const req = getParameters(fullReq);
     const {
       parameters,
-      reqBodyProp
+      reqBodyProp,
     } = req;
 
 
     const operationObject = {};
-    if (parameters.length > 0) operationObject['parameters'] = parameters;
-    if (Object.keys(reqBodyProp).length > 0) operationObject['requestBody'] = {
-      "application/json": {
-        schema: {
-          type: "object",
-          properties: reqBodyProp,
+    if (parameters.length > 0) operationObject.parameters = parameters;
+    if (Object.keys(reqBodyProp).length > 0) {
+      operationObject.requestBody = {
+        'application/json': {
+          schema: {
+            type: 'object',
+            properties: reqBodyProp,
+          },
         },
-      },
-    };
+      };
+    }
 
     if (!paths[endpoint]) paths[endpoint] = {};
-    paths[endpoint].method = operationObject;
+    paths[endpoint][routeInfo[endpoint].method] = operationObject;
   }
   return paths;
 }
 
 
 module.exports = {
-  getReqInfo
+  getReqInfo,
 };
