@@ -14,9 +14,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -45,7 +45,7 @@ describe('/pet/:petID_PUT', function() {
   request(serverURL)
     .put('/pet/0')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -72,9 +72,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/3')
+    .put('/pet/6')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -103,7 +103,7 @@ describe('/pet/:petID_PUT', function() {
   request(serverURL)
     .put('/pet/undefined')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -132,7 +132,7 @@ describe('/pet/:petID_PUT', function() {
   request(serverURL)
     .put('/pet/null')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -161,7 +161,7 @@ describe('/pet/:petID_PUT', function() {
   request(serverURL)
     .put('/pet/false')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -188,9 +188,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":0,"petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":0,"petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -217,9 +217,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"3","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"6","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -246,9 +246,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -275,9 +275,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":null,"petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":null,"petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -304,9 +304,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":false,"petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":false,"petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -333,9 +333,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":0,"favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":0,"favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -362,9 +362,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"3","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"6","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -391,9 +391,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -420,9 +420,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":null,"favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":null,"favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -449,9 +449,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":false,"favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":false,"favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -478,9 +478,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":0,"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":0,"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -507,9 +507,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":"3","family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":"6","family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -536,9 +536,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -565,9 +565,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":null,"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":null,"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -594,9 +594,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":false,"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":false,"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -623,9 +623,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":0,"dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":0,"dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -652,9 +652,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"3","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"6","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -681,9 +681,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -710,9 +710,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":null,"dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":null,"dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -739,9 +739,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":false,"dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":false,"dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -768,9 +768,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":0,"siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":0,"siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -797,9 +797,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"3","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"6","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -826,9 +826,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -855,9 +855,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":null,"siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":null,"siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -884,9 +884,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":false,"siblings":{"sisters":"j5a7r6rqiy","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":false,"siblings":{"sisters":"sxas26gva3","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -913,9 +913,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":0,"brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":0,"brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -942,9 +942,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"3","brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"6","brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -971,9 +971,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1000,9 +1000,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":null,"brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":null,"brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1029,9 +1029,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":false,"brothers":"4gjksqx3i6"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":false,"brothers":"rnsgus46x3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1058,9 +1058,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":0}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":0}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1087,9 +1087,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":"3"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":"6"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1116,9 +1116,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy"}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3"}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1145,9 +1145,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":null}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":null}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -1174,9 +1174,9 @@ describe('/pet/:petID_PUT', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .put('/pet/5')
+    .put('/pet/4')
     .type('application/json')
-    .send({"name":"vawg2n0t6c","petType":"44aqju8ytj","favoriteFoods":["eymote93y8","iw1n3wpt9e","tt1usfgiie","nuxdntymm","ifvzpxxpt"],"family":{"mom":"4lhkcfw6l2","dad":"pqbhljxo34","siblings":{"sisters":"j5a7r6rqiy","brothers":false}}})
+    .send({"name":"18rpwntmnr","petType":"rssrxuclnx","favoriteFoods":["bg0vj7t3im","ufnfmwyw8f","f6yp69y1c5","rf2eknsxnm","77ce51zx4"],"family":{"mom":"cvnitwbk2k","dad":"hmj8eqv3oq","siblings":{"sisters":"sxas26gva3","brothers":false}}})
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
