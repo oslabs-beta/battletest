@@ -6,6 +6,8 @@ const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
+const buildReport = require('./start/writeReport.js');
+
 // constant event name variables to use
 const {
   EVENT_RUN_BEGIN, // execution begin
@@ -104,7 +106,7 @@ class BattleReporter {
         rl.question('Would you like to output your results to an external file? (y/n): ', (ans) => {
           if (ans === 'y') {
             console.log('Writing to output file');
-            this.writeReport();
+            buildReport();
           }
           rl.close();
         });
