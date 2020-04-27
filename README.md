@@ -76,11 +76,17 @@ Battletest uses SwaggerParser to validate & parse OpenAPI v3.03 documents.  Batt
 
 `$ battletest generate`
 
+<<<<<<< HEAD
 will comb the newly created `battletest.config.js` and generate test files under `test/__battletest__`
+=======
+will parse the newly created `battletest.config.js` and generate test files under `test/__battletest__` in your project's directory
+>>>>>>> 2c4101b0d2b865facc8ee43ff10acd1437cf45ef
 
 `$ battletest start`
 
-runs the generated tests and outputs the results in the terminal. Additional logs can be found under `test/__battletest__/__result__`
+runs the generated tests via mocha and outputs the results in the terminal. Additional logs can be found under `test/__battletest__/__result__`
+
+
 
 `battletest.config.js` specifies the endpoint paths (e.g., '/pet/'), the operations (e.g., 'GET', 'PUT') .
 

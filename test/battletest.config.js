@@ -1,59 +1,65 @@
 module.exports = {
+<<<<<<< HEAD
   serverLocation: "../server.js",
   serverURL: "http://localhost:8000",
   failStatusCode: 500,
+=======
+  serverLocation: '../server.js',
+  serverURL: 'http://localhost:8000',
+>>>>>>> 2c4101b0d2b865facc8ee43ff10acd1437cf45ef
   authorization_cookie: null,
   paths: {
-    "/pet/:petID": {
+    '/pet/:petID': {
       GET: {
         parameters: [
           {
-            name: "petID",
-            in: "path",
+            name: 'petID',
+            in: 'path',
             schema: {
-              type: "integer",
+              type: 'integer',
             },
           },
           {
-            name: "lastVisitedDate",
-            in: "cookie",
-            schema: { type: "string" },
-          }
+            name: 'lastVisitedDate',
+            in: 'cookie',
+            schema: { type: 'string' },
+          },
         ],
       },
       PUT: {
         parameters: [
           {
-            name: "petID",
-            in: "path",
-            schema: { type: "integer" },
+            name: 'petID',
+            in: 'path',
+            schema: { type: 'integer' },
           },
         ],
         requestBody: {
-          "application/json": {
+          'application/json': {
             schema: {
-              type: "object", // can also be an array
+              type: 'object', // can also be an array
               properties: {
                 name: {
-                  type: "string",
+                  type: 'string',
                 },
                 petType: {
-                  type: "string",
+                  type: 'string',
                 },
                 favoriteFoods: {
-                  type: "array",
-                  items: { type: "string"},
+                  type: 'array',
+                  items: { type: 'string' },
                 },
                 family: {
-                  type: "object",
+                  type: 'object',
                   properties: {
-                    mom: { type: "string" },
-                    dad: { type: "string" },
+                    mom: { type: 'string' },
+                    dad: { type: 'string' },
                     siblings: {
-                      type: "object",
+                      type: 'object',
                       properties: {
-                        sisters: { type: "string"},
-                        brothers: { type: "string"},
+                        sisters: { type: 'string' },
+                        brothers: { type: 'string' },
+                      },
                     },
                   },
                 },
@@ -63,6 +69,5 @@ module.exports = {
         },
       },
     },
-  }
-}
-}
+  },
+};
