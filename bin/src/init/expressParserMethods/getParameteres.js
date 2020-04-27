@@ -17,7 +17,7 @@ module.exports = {
       // ref = [body, user, username]
       switch (ref[0]) {
         case "body":
-          reqBodyProp = buildReqBodyProp(ref.slice(1));
+          //reqBodyProp = buildReqBodyProp(ref.slice(1));
           break;
         case "headers":
           parameters.push({

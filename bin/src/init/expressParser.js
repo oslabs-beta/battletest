@@ -4,7 +4,7 @@
  * Ask user for request data type in terminal
  */
 // User to fill the path to their server file when they implement Battletest:
-const Server = require('/Users/bintakinteh/Desktop/Practice-Tutorial/react-git-search/server/server.js');
+//const Server = require('/Users/bintakinteh/Desktop/Practice-Tutorial/react-git-search/server/server.js');
 
 
 const {
@@ -32,7 +32,7 @@ module.exports = (server) => {
 }
 
 
-const routeI = expressParser(Server);
-console.log(routeI)
+// const routeI = expressParser(Server);
+// console.log(routeI)
 // console.log(JSON.stringify(routeI, null, 2))
-console.log(JSON.stringify(getReqInfo(routeI), null, 2))
+// console.log(JSON.stringify(getReqInfo(routeI), null, 2))

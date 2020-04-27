@@ -1,6 +1,7 @@
 module.exports = {
   serverLocation: "../server.js",
   serverURL: "http://localhost:8000",
+  failStatusCode: 500,
   authorization_cookie: null,
   paths: {
     "/pet/:petID": {
