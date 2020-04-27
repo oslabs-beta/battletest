@@ -4,7 +4,7 @@
   "description": "Backend testing generator",
   "main": "index.js",
   "bin": {
-    "battletest": "./bin/cli.js"
+    "battletest": "./lib/cli/cli.js"
   },
   "scripts": {
     "test": "mocha",
