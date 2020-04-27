@@ -42,12 +42,13 @@ const init = (args) => {
 
   const fileType = fileLocation.split('.')[1];
   const filePath = path.resolve(process.cwd(), fileLocation);
+
   if (fileType === 'js') {
     // check if it is an express file
     const { server, app } = require(filePath);
     const configFile = expressConfig(expressParser(app));
 
-    saveConfigFile(configFile);
+    saveConfigFile(`module.exports = ${JSON.stringify(configFile, null, 2).replace(/"(\w+)"\s*:/g, '$1:')}`);
     server.close();
     return;
   }
@@ -63,8 +64,6 @@ const init = (args) => {
       })
       .catch((err) => { throw err; });
   }
-
-  console.log('battletest');
 };
 
 module.exports = init;

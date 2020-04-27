@@ -25,19 +25,4 @@ function expressParser(server) {
 }
 
 
-
-
-const routeI = expressParser(Server);
-console.log(JSON.stringify(routeI, null, 2))
-
-
-
-
-
-
-
-
-// module.exports = (server) => {
-//   return expressParser(server);
-// };
-
+module.exports = (server) => expressParser(server);
