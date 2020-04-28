@@ -106,7 +106,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
           }
         }
         ```
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 ## Specifying Data Types
 
@@ -147,7 +147,7 @@ Possible data types include "array", "object", "integer", "number" and "string".
       items: { type: "string" }
     }
     ```
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 ## Sample `battletest.config.js`
 ```js
@@ -180,7 +180,7 @@ module.exports = {
 ```
 For more sample `battletest.config.js` files, please see [here](documentation/examples).
 
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 ### Using Express-js server file 
 
@@ -221,7 +221,7 @@ module.exports = {
     },
 }
 ```
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 ### Using an OpenAPI Document 
 Battletest uses SwaggerParser to validate & parse OpenAPI v3.03 documents. As OpenAPI documents specify the expected data type for each request field, resulting `battletest.config.js` will have been completedly populated other than __serverLocation__ and __serverURL__ for the dev server. Please see sample output [here](documentation/examples/openAPIparser-battletest.config.js). Battletest does not currently support OpenAPI v2.0 documents.
@@ -266,7 +266,7 @@ module.exports = {
     }
   }
 ```
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 ## Generate Test Files
 ```
@@ -318,17 +318,17 @@ For instance, invalid data to be tested for a __number__ field includes, among o
 
 For details on how the random test data is generated, please see the relevant code [here](lib/generate/genRandom).
 
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. For an overview diagram for the codebase, please see [here](documentation/images/battletest-uml.png).  For full API documentation, please see [here](documentation/index.html)
 
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 # Credits
 
 Binta Kinteh [@BintaKinteh](https://github.com/BintaKinteh) | Duygu Yigitsoy [@dyigitsoy](https://github.com/dyigitsoy) | Kevin Luo [@LuoKevin](https://github.com/LuoKevin) | Soobin Kim [@soobinkim1](https://github.com/soobinkim1) | Yula Ko [@yulako](https://github.com/yulako)
 
-[↥Back to top](#Battletest.js)
+[↥Back to top](#battletestjs)
 
 # License
