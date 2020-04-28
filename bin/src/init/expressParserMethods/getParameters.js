@@ -1,34 +1,47 @@
-const {
-  buildBodyProp
-} = require('./buildBodyProp');
+/**
+ * @name getParameters
+ * @description Builds the paths property in the battletest.config file. The introspected express server file
+ * details (i.e headers, cookies, params, body, etc) are passed in as an array of arrays, with each sub-array
+ * containing request details specific to each route.active
+ * @param {array} fullReq
+ * @returns {object} 
+ */
+const buildBodyProp = require('./buildBodyProp');
 
 function getParameters(fullReq) {
-  //const method = routeInfo[endpoint].method.toUpperCase();
+
   const reqBodyProp = {};
   const parameters = [];
-  const paramSet = new Set(); //store values as ref[0] + ref[1];
+  const paramSet = new Set();
 
-  console.log(fullReq)
-  for (let ref of fullReq) {
+  console.log(fullReq);
 
-    if (ref[ref.length - 1] === 'body') {
-      ref.unshift(ref.pop());
+  // properties that are deconstructed from req.body appear at the beginning of the array
+  // and body is at the end. Therefore the body is removed from the end of the array and
+  // added to the beginning
+  for (let i = 0; i < fullReq.length; i++) {
+    if (fullReq[i][fullReq[i].length - 1] === 'body') {
+      fullReq[i].unshift(fullReq[i].pop());
     }
-    console.log(ref)
-    if (ref.length > 1) {
 
-      const refStr = ref.join(""); //???
+    // checking if the subarray is greater than on takes care of cases where req.body is 
+    // written in the server file but no properties are being accessed
+    if (fullReq[i].length > 1) {
+
+      // using Set ti track the contents of each subarray to avoid duplicate 
+      const refStr = fullReq[i].join("");
       if (paramSet.has(refStr)) continue;
       else paramSet.add(refStr);
 
-      // ref = [body, user, username]
-      switch (ref[0]) {
+      switch (fullReq[i][0]) {
         case "body":
-          buildBodyProp(ref.slice(1), reqBodyProp);
+          // body is sliced of the subarray and passed to buildBodyProb which 
+          // returns and object with the request body details
+          buildBodyProp(fullReq[i].slice(1), reqBodyProp);
           break;
         case "headers":
           parameters.push({
-            name: ref[1],
+            name: fullReq[i][1],
             in: "header",
             schema: {
               type: null
@@ -37,7 +50,7 @@ function getParameters(fullReq) {
           break;
         case "cookie":
           parameters.push({
-            name: ref[1],
+            name: fullReq[i][1],
             in: "cookie",
             schema: {
               type: null
@@ -46,7 +59,7 @@ function getParameters(fullReq) {
           break;
         case "query":
           parameters.push({
-            name: ref[1],
+            name: fullReq[i][1],
             in: "query",
             schema: {
               type: null
@@ -55,7 +68,7 @@ function getParameters(fullReq) {
           break;
         case "params":
           parameters.push({
-            name: ref[1],
+            name: fullReq[i][1],
             in: "path",
             schema: {
               type: null
@@ -71,19 +84,8 @@ function getParameters(fullReq) {
   return {
     parameters,
     reqBodyProp
-  }
+  };
 }
 
-// const fullReq = [
-//   ['params', 'id'],
-//   ['params', 'id'],
-//   ['user', 'body'],
-//   ['body', 'user', 'userInfo']
-// ];
 
-// console.log(getParameters(fullReq));
-
-
-module.exports = {
-  getParameters
-};
+module.exports = getParameters;

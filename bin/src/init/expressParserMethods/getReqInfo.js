@@ -1,29 +1,34 @@
-const {
-  getParameters,
-} = require('./getParameters');
+/**
+ * @name getParameters
+ * @description Extracts the request parameters, query, headers and body properties from the middleware functions
+ *              and builds the battletest.config paths property
+ * @param {object} routeInfo this is an object that an endpoint as a property, whose value is an object with the properties method, params and middleware
+ * @returns{object} 
+ */
+
+const getParameters = require('./getParameters.js');
 
 function getReqInfo(routeInfo) {
-  // console.log(routeInfo);
+
   const paths = {};
-  // look at each endpoint in routeInfo
+
   for (const endpoint in routeInfo) {
-    // console.log(endpoint.method);
 
-
+    // the funcDef contains arrays of middleware functions(strings). getReqDetails looks 
+    // properties deconstructed from req.body or otherwise. removeCurlyBraces looks at reach
+    // array returned from matching getReqDetails and return words only.
     const funcDef = routeInfo[endpoint].middleware;
-    // console.log(funcDef)
-    const regex = /\{\s*.+\s*\}\s*\=\s*req\.[\w.]+|req\.[\w.]+/g;
-    // by using regular expression check what comes after "req." to save it as req's location
-    const regEx = /\w*\w\w*/g;
+    const getReqDetails = /\{\s*.+\s*\}\s*\=\s*req\.[\w.]+|req\.[\w.]+/g;
+    const removeCurlyBraces = /\w*\w\w*/g;
 
     const fullReq = [];
-    funcDef.forEach((string) => { // fullReq.push(string.match(regex))
+    funcDef.forEach((string) => {
       if (string !== undefined) {
-        matchedString = string.match(regex);
+        matchedString = string.match(getReqDetails);
       }
 
       if (matchedString !== null) {
-        matchedString.forEach((newString) => fullReq.push(newString.match(regEx)));
+        matchedString.forEach((newString) => fullReq.push(newString.match(removeCurlyBraces)));
       }
     });
 
@@ -34,7 +39,7 @@ function getReqInfo(routeInfo) {
         }
       }
     }
-    console.log('fullReq in reqInfo', fullReq);
+
 
     const req = getParameters(fullReq);
     const {
@@ -43,6 +48,8 @@ function getReqInfo(routeInfo) {
     } = req;
 
 
+    // build out the paths property of the battletest.config file. each route key of the
+    // paths object has an object as a value whose keys are the methods applied to that route;
     const operationObject = {};
     if (parameters.length > 0) operationObject.parameters = parameters;
     if (Object.keys(reqBodyProp).length > 0) {
@@ -63,6 +70,4 @@ function getReqInfo(routeInfo) {
 }
 
 
-module.exports = {
-  getReqInfo,
-};
+module.exports = getReqInfo;

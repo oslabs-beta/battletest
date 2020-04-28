@@ -1,27 +1,36 @@
-module.exports = {
-  routeData(routerLayers) {
-    const routeInfo = {};
-    // iterate through the stack of routes in the server
-    // access each layer that contains the detailed information for each existing endpoint
-    for (routerObj of routerLayers) {
+/**
+ * @name routeData
+ * @description 
+ * @param {array} routerLayers 
+ * @returns {object} returns an object which as an route as a key and the value of each key is the method, request
+ * information and middleware associated with that route
+ */
 
+function routeData(routerLayers) {
+  const routeInfo = {};
+  for (let i = 0; i < routerLayers.length; i++) {
 
-      const middleware = [];
-      const params = routerObj.keys;
-      const method = Object.keys(routerObj.route.methods)[0];
-      for (stackObj of routerObj.route.stack) {
-        middleware.push(String(stackObj.handle));
-      }
-      if (!routeInfo.hasOwnProperty(routerObj.route.path)) {
-        routeInfo[routerObj.route.path] = {};
-      }
-      routeInfo[routerObj.route.path] = {
-        method,
-        params,
-        middleware
-      };
+    const middleware = [];
+
+    // keys is an array of objects, where each object contains the request parameters
+    const params = routerLayers[i].keys;
+    const method = Object.keys(routerLayers[i].route.methods)[0];
+    for (stackObj of routerLayers[i].route.stack) {
+
+      // all middleware function are stored in the handle array in the each router.stack object
+      middleware.push(String(stackObj.handle));
     }
-    // use this routeInfo object to populate the config file
-    return routeInfo;
+    if (!routeInfo.hasOwnProperty(routerLayers[i].route.path)) {
+      routeInfo[routerLayers[i].route.path] = {};
+    }
+    routeInfo[routerLayers[i].route.path] = {
+      method,
+      params,
+      middleware
+    };
   }
-};
+  // use this routeInfo object to populate the config file
+  return routeInfo;
+}
+
+module.exports = routeData;

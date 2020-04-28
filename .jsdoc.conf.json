@@ -1,22 +1,36 @@
-{
-    "plugins": [],
-    "recurseDepth": 10,
-    "opts": {
-      "recurse": true,
-      "destination": "./docs/"
-    },
-    "source": {
-      "include": ["bin/cmds"],
-      "includePattern": ".+\\.js(doc|x)?$",
-      "excludePattern": "node_modules"
-    },
-    "sourceType": "module",
-    "tags": {
-      "allowUnknownTags": true,
-      "dictionaries": ["jsdoc", "closure"]
-    },
-    "templates": {
-      "cleverLinks": false,
-      "monospaceLinks": false
-    }
-  }
+ {
+   "tags": {
+     "allowUnknownTags": true
+   },
+   "source": {
+     "include": [
+       "bin"
+     ],
+     "exclude": [
+       ".git",
+       ".meteor",
+       "node_modules"
+     ],
+     "includePattern": ".+\\.js(x|doc)?$"
+   },
+   "plugins": ["plugins/markdown"],
+   "opts": {
+     "encoding": "utf8",
+     "template": "templates/default",
+     "destination": "./documentation",
+     "recurse": true,
+     "verbose": true
+   },
+   "markdown": {
+     "parser": "gfm",
+     "hardwrap": true
+   },
+   "templates": {
+     "cleverLinks": false,
+     "monospaceLinks": false,
+     "default": {
+       "outputSourceFiles": true,
+       "includeDate": true
+     }
+   }
+ }
