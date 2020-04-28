@@ -1,4 +1,4 @@
-module.export = { 
+module.exports = { 
 
 buildBodyProp(arr, reqBody) {
 
@@ -19,8 +19,8 @@ buildBodyProp(arr, reqBody) {
     curObj = curObj[key].properties;
     // console.log(curObj)
    } else {
-    curObj = curObj[key].properties;
-    
+     curObj[key].properties = {};
+     curObj = curObj[key].properties;
    }
   } 
 }
@@ -29,9 +29,6 @@ buildBodyProp(arr, reqBody) {
 // console.log(JSON.stringify(buildBodyProp(['user'],reqBody)))
 // console.log(buildBodyProp(['admin', 'adminContacts', 'adminEmail','test'],reqBody))
 // console.log(JSON.stringify(reqBody))
-
-
-  
 
 
 
