@@ -1204,6 +1204,7 @@ afterEach(function() {
 
 after(() => {
     const resultPath = path.resolve(process.cwd(),"__battletest__/__result__/_pet_:petID_PUT.json")
+    console.log('after block')
     fs.writeFile(resultPath, JSON.stringify(result, null, 2), function(err) {
     if (err) throw err
     });
