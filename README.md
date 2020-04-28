@@ -9,7 +9,7 @@ Command-line tool for auto-generating Node.js endpoint test suites with random d
 
 ## Why Use Battletest.js?
 
-Backends supporting modern web APIs must be built to handle requests with any data type, including invalid ones.  For instance, if a client sends a request with an extremely long string or -1 in the "ticker" field that should only contain a short string, will the server process fail? 
+Modern web APIs must be built to handle requests with any data type, including invalid ones.  __*For instance, if a client sends a request with an extremely long string or -1 in the "ticker" field that should only contain a short string, will the server process fail?*__ 
 
 Battletest.js will take in the shape of the intended request object, and generate many test requests that vary each field of the request object by a single unexpected value.  By testing the backend as such, the developer can easily determine if there are any random test requests that might make the web API backend fail. 
 
