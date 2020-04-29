@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const app = require('../example/serverFiles/sampleServerOne/server.js');
+const app = require('./resources/sampleServer.js');
 const RouteData = require('../lib/init/expressParserMethods/routeData.js');
 
 
