@@ -275,7 +275,16 @@ $ battletest generate
 $ battletest generate <endpoint-name>
 ```
 
-This will parse the newly created `battletest.config.js` and generate test files under `__battletest__` in your project's directory.  To only generate tests for a particular endpoint, pass in the endpoint name as an argument.
+This will parse the newly created `battletest.config.js` and generate test files under `__battletest__` in your project's directory.  To only generate tests for a particular endpoint, pass in the endpoint name as an argument. 
+
+Sample test cases are as below:
+
+* Request where body.post_password is "undefined".
+  ![](documentation/images/sample-test3.png)
+* Request where body.post_password is "null".
+  ![](documentation/images/sample-test2.png)
+* Request where body.post_password is "false".
+  ![](documentation/images/sample-test.png)
 
 For sample test files, please see [here](documentation/examples).
 
@@ -330,5 +339,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Binta Kinteh [@BintaKinteh](https://github.com/BintaKinteh) | Duygu Yigitsoy [@dyigitsoy](https://github.com/dyigitsoy) | Kevin Luo [@LuoKevin](https://github.com/LuoKevin) | Soobin Kim [@soobinkim1](https://github.com/soobinkim1) | Yula Ko [@yulako](https://github.com/yulako)
 
 [↥Back to top](#battletestjs)
-
-# License

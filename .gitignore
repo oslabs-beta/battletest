@@ -5,3 +5,4 @@ out
 battletest.log
 doc
 .vscode
+.DS_Store
