@@ -4,3 +4,4 @@ out
 .eslintrc.json
 battletest.log
 doc
+.vscode

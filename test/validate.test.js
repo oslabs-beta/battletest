@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const chai = require('chai');
 const validateConfig = require('../lib/generate/validateConfig.js');
-const config = require('./testConfig.js');
+const config = require('./resources/configs/testConfig.js');
 
 const { expect } = chai;
 // console.log(validateConfig(config));
