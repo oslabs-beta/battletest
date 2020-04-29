@@ -1,5 +1,5 @@
 module.exports = {
-  serverLocation: 'sampleServer.js',
+  serverLocation: './test/resources/sampleServer.js',
   serverURL: 'http://localhost:3434',
   authorization_cookie: null,
   expectedStatusCode: 400,

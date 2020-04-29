@@ -54,7 +54,7 @@ module.exports = {
                 },
                 favoriteFoods: {
                   type: 'array',
-                  items: {type:'string'},
+                  items: { type: 'string' },
                 },
               },
             },
