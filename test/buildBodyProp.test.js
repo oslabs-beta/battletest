@@ -1,7 +1,9 @@
 // test case for 1.[user] 2.[user, username] 3.['user', username, profile ]
 
-const { expect } = require('chai');
-const { buildBodyProp } = require('../lib/init/expressParserMethods/buildBodyProp.js');
+const {
+  expect
+} = require('chai');
+const buildBodyProp = require('../lib/init/expressParserMethods/buildBodyProp.js');
 
 
 describe('buildBodyProp', () => {
@@ -15,7 +17,11 @@ describe('buildBodyProp', () => {
   it('should have a property named type as a value of user  ', () => {
     const reqBody = {};
     buildBodyProp(['user'], reqBody);
-    expect(reqBody).to.deep.include({ user: { type: null } });
+    expect(reqBody).to.deep.include({
+      user: {
+        type: null
+      }
+    });
   });
 
   // test for an array of two elements
@@ -23,7 +29,11 @@ describe('buildBodyProp', () => {
     const reqBody = {};
     buildBodyProp(['user'], reqBody);
     buildBodyProp(['user', 'username'], reqBody);
-    expect(reqBody).to.have.deep.nested.property('user.properties', { username: { type: null } });
+    expect(reqBody).to.have.deep.nested.property('user.properties', {
+      username: {
+        type: null
+      }
+    });
   });
 
 
