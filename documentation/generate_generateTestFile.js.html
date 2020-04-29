@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: generate/generateTestFile.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: generate/generateTestFile.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const generateSingleTest = require('./genCode/generateSingleTest.js');
+const generateDescribe = require('./genCode/generateDescribe.js');
+const saveTestFile = require('./saveTestFile.js');
+const buildTestTitle = require('./genCode/buildTestTitle.js');
+const buildBody = require('./buildBody.js');
+const GenArray = require('./genRandom/GenArray.js');
+const GenString = require('./genRandom/GenString.js');
+const GenBoolean = require('./genRandom/GenBoolean.js');
+const GenNumber = require('./genRandom/GenNumber.js');
+
+const randGen = {
+  string: GenString,
+  boolean: GenBoolean,
+  number: GenNumber,
+  integer: GenNumber,
+};
+
+/**
+ * @description This outputs a test file for a specified operation on a specified path (ex. GET operation on "/pet").  Each test file contains supertests for many test cases. Each test
+ * @param {String} path
+ * @param {*} operation
+ * @param {*} operationObject
+ */
+function generateTestFile(path, operation, operationObject) {
+  const baseScenario = {};
+  const generators = {};
+  let testCode = '';
+
+  // fill out base scenario &amp; generators for PARAMETERS
+  if (operationObject.hasOwnProperty('parameters')) {
+    operationObject.parameters.forEach((param) => {
+      if (!baseScenario[param.in]) {
+        baseScenario[param.in] = {};
+        generators[param.in] = {};
+      }
+      generators[param.in][param.name] = new randGen[param.schema.type]();
+      const { val, descript } = generators[param.in][param.name].next();
+      baseScenario[param.in][param.name] = val; // initially, normal input
+    });
+  }
+  // fill out base scenario &amp; generators for REQUESTBODY
+  if (operationObject.hasOwnProperty('requestBody')) {
+    baseScenario.requestBody = {};
+    generators.requestBody = {};
+    Object.keys(operationObject.requestBody).forEach((contentType) => {
+      baseScenario.requestBody[contentType] = {};
+      generators.requestBody[contentType] = {};
+      if (contentType === 'text/plain') {
+        // TO DO: same as 7 - 13; make into a module
+        if (!operationObject.requestBody[contentType].schema) {
+        }
+      } else if (
+        contentType === 'application/json'
+        || contentType === 'application/xml'
+      ) {
+        buildBody(
+          (propObj = operationObject.requestBody[contentType].schema),
+          (baseObj = baseScenario.requestBody[contentType]),
+          (genObj = generators.requestBody[contentType]),
+          (propName = 'body'),
+        );
+      }
+    });
+  }
+
+  // BASE SCENARIO
+  testCode += generateSingleTest(path, operation, baseScenario, 'Base Scenario');
+  // GENERATING RANDOM PARAMETER FIELDS
+  if (operationObject.hasOwnProperty('parameters')) {
+    for (const fieldKey in generators) {
+      // skip request body for now
+      if (fieldKey === 'requestBody') continue;
+      for (const nameKey in generators[fieldKey]) {
+        const scenario = JSON.parse(JSON.stringify(baseScenario));
+        for (let i = 0; i &lt; 5; i++) {
+          const { val, descript } = generators[fieldKey][nameKey].next();
+          scenario[fieldKey][nameKey] = val;
+          testCode += generateSingleTest(path, operation, scenario, buildTestTitle.parameters(fieldKey, nameKey, descript));
+        }
+      }
+    }
+  }
+
+  function skimBody(genObj, mapArr) {
+    if (genObj instanceof GenArray || genObj instanceof GenBoolean || genObj instanceof GenString || genObj instanceof GenNumber) {
+      const scenario = JSON.parse(JSON.stringify(baseScenario));
+      const lastKey = mapArr.pop();
+      const target = mapArr.length === 0
+        ? scenario.requestBody
+        : mapArr.reduce(
+          (obj, key) => (obj &amp;&amp; obj[key] !== 'undefined' ? obj[key] : undefined),
+          scenario.requestBody,
+        );
+      for (let i = 0; i &lt; 5; i++) {
+        const { val, descript } = genObj.next();
+        target[lastKey] = val;
+        testCode += generateSingleTest(path, operation, scenario, buildTestTitle.requestBody([...mapArr, lastKey], descript));
+      }
+      return;
+    }
+
+    for (const key in genObj) {
+      skimBody(genObj[key], [...mapArr, key]);
+    }
+  }
+
+  if (operationObject.hasOwnProperty('requestBody')) {
+    const contentType = Object.keys(generators.requestBody)[0];
+    skimBody(generators.requestBody[contentType], (mapArr = [contentType]));
+  }
+
+  const testFile = generateDescribe(path, operation, testCode);
+  saveTestFile(path, operation, testFile);
+}
+
+module.exports = generateTestFile;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GenArray.html">GenArray</a></li><li><a href="GenBoolean.html">GenBoolean</a></li><li><a href="GenNumber.html">GenNumber</a></li><li><a href="GenString.html">GenString</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BattleReporter">BattleReporter</a></li><li><a href="global.html#bin/cmds/generate">bin/cmds/generate</a></li><li><a href="global.html#bin/cmds/init">bin/cmds/init</a></li><li><a href="global.html#bin/cmds/start">bin/cmds/start</a></li><li><a href="global.html#bin/src/generate/generateDescribe">bin/src/generate/generateDescribe</a></li><li><a href="global.html#bin/src/util/ceckFiles">bin/src/util/ceckFiles</a></li><li><a href="global.html#buildBody">buildBody</a></li><li><a href="global.html#defaultTestValues">defaultTestValues</a></li><li><a href="global.html#directoryPath">directoryPath</a></li><li><a href="global.html#dirPath">dirPath</a></li><li><a href="global.html#extractBody">extractBody</a></li><li><a href="global.html#extractRoute">extractRoute</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#generateTestFile">generateTestFile</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#openAPIParser">openAPIParser</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#requestBody">requestBody</a></li><li><a href="global.html#src/generate/generateSingleTest">src/generate/generateSingleTest</a></li><li><a href="global.html#src/generate/generateTestSetup">src/generate/generateTestSetup</a></li><li><a href="global.html#validateBody">validateBody</a></li><li><a href="global.html#validateConfig">validateConfig</a></li><li><a href="global.html#validateParam">validateParam</a></li><li><a href="global.html#validateRoute">validateRoute</a></li><li><a href="global.html#validateSchema">validateSchema</a></li><li><a href="global.html#writeLog">writeLog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Apr 29 2020 11:14:32 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

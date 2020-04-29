@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: init/openApiParser.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: init/openApiParser.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const SwaggerParser = require('@apidevtools/swagger-parser');
+const _ = require('lodash');
+
+/** @description Parses openAPI JSON or YML file and converts into battletest.config.js
+ * @async
+ * @param {string} api -file path or URL to the OpenAPI, accepts both JSON and YML
+ * @returns {Promise} a newly created promise object, resolves into the newly created battletest.config
+ */
+async function openAPIParser(api) {
+  // dereference and parse OpenAPI's schema
+  const deref = await SwaggerParser.dereference(api);
+  const batConfig = {
+    serverLocation: null,
+    serverURL: null,
+    authorization_cookie: null,
+    expectedStatusCode: 400,
+    paths: {},
+  };
+  if (!deref.paths) return batConfig;
+  Object.keys(deref.paths).forEach((route) => {
+    batConfig.paths[route] = extractRoute(deref.paths[route]);
+  });
+  return batConfig;
+}
+
+/** @description extracts method objects from openAPI route objects
+ * @param {object} routeObj - object contains method objects e.g. {get: {}, post: {}}
+ * @returns {object} a new routeObj with relevant data extracted from the original
+ */
+const extractRoute = (routeObj) => {
+  const newObj = {};
+  Object.keys(routeObj).forEach((method) => {
+    newObj[method] = {};
+    // if the original object has a parameters property, clone it into the config object
+    if (routeObj[method].parameters) {
+      newObj[method].parameters = _.cloneDeep(routeObj[method].parameters);
+    }
+    // same for the requestBody, but invoke extractBody to extract the right content types
+    if (routeObj[method].requestBody) {
+      newObj[method].requestBody = extractBody(routeObj[method].requestBody.content);
+    }
+  });
+  return newObj;
+};
+
+/** @description extracts the proper contentTypes from the entire openAPI object
+ * @param {object} contentObj
+ * @returns new requestBody content object
+ */
+const extractBody = (contentObj) => {
+  const newBody = {};
+  // only accepts application/json(xml) or text/plain
+  const contentRgx = /(application\/(json|xml))|(text\/plain)/;
+  Object.keys(contentObj).forEach((contentType) => {
+    if (contentRgx.test(contentType)) {
+      newBody[contentType] = _.cloneDeep(contentObj[contentType]);
+    }
+  });
+  return newBody;
+};
+
+
+module.exports = openAPIParser;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GenArray.html">GenArray</a></li><li><a href="GenBoolean.html">GenBoolean</a></li><li><a href="GenNumber.html">GenNumber</a></li><li><a href="GenString.html">GenString</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BattleReporter">BattleReporter</a></li><li><a href="global.html#bin/cmds/generate">bin/cmds/generate</a></li><li><a href="global.html#bin/cmds/init">bin/cmds/init</a></li><li><a href="global.html#bin/cmds/start">bin/cmds/start</a></li><li><a href="global.html#bin/src/generate/generateDescribe">bin/src/generate/generateDescribe</a></li><li><a href="global.html#bin/src/util/ceckFiles">bin/src/util/ceckFiles</a></li><li><a href="global.html#buildBody">buildBody</a></li><li><a href="global.html#defaultTestValues">defaultTestValues</a></li><li><a href="global.html#directoryPath">directoryPath</a></li><li><a href="global.html#dirPath">dirPath</a></li><li><a href="global.html#extractBody">extractBody</a></li><li><a href="global.html#extractRoute">extractRoute</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#generateTestFile">generateTestFile</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#openAPIParser">openAPIParser</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#requestBody">requestBody</a></li><li><a href="global.html#src/generate/generateSingleTest">src/generate/generateSingleTest</a></li><li><a href="global.html#src/generate/generateTestSetup">src/generate/generateTestSetup</a></li><li><a href="global.html#validateBody">validateBody</a></li><li><a href="global.html#validateConfig">validateConfig</a></li><li><a href="global.html#validateParam">validateParam</a></li><li><a href="global.html#validateRoute">validateRoute</a></li><li><a href="global.html#validateSchema">validateSchema</a></li><li><a href="global.html#writeLog">writeLog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Apr 29 2020 11:14:32 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
