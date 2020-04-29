@@ -1,35 +1,35 @@
- {
-   "tags": {
-     "allowUnknownTags": true
-   },
-   "source": {
-     "include": [
-       "lib"
-     ],
-     "exclude": [
-       ".git",
-       "node_modules"
-     ],
-     "includePattern": ".+\\.js(x|doc)?$"
-   },
-   "plugins": ["plugins/markdown"],
-   "opts": {
-     "encoding": "utf8",
-     "template": "templates/default",
-     "destination": "./documentation",
-     "recurse": true,
-     "verbose": true
-   },
-   "markdown": {
-     "parser": "gfm",
-     "hardwrap": true
-   },
-   "templates": {
-     "cleverLinks": false,
-     "monospaceLinks": false,
-     "default": {
-       "outputSourceFiles": true,
-       "includeDate": true
-     }
-   }
- }
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": [
+      "lib"
+    ],
+    "exclude": [
+      ".git",
+      "node_modules"
+    ],
+    "includePattern": ".+\\.js(x|doc)?$"
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "encoding": "utf8",
+    "template": "templates/default",
+    "destination": "./documentation",
+    "recurse": true,
+    "verbose": true
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true,
+      "includeDate": true
+    }
+  }
+}
