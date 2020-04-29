@@ -1,7 +1,7 @@
 // test case for 1.[user] 2.[user, username] 3.['user', username, profile ]
 
 const { expect } = require('chai');
-const { buildBodyProp } = require('../lib/init/expressParserMethods/buildBodyProp.js/index.js');
+const { buildBodyProp } = require('../lib/init/expressParserMethods/buildBodyProp.js');
 
 
 describe('buildBodyProp', () => {
