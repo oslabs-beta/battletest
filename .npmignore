@@ -9,3 +9,4 @@ lib/start
 .gitignore
 test
 .vscode
+.DS_Store
