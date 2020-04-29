@@ -1,15 +1,17 @@
 # Battletest.js
+
 [![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
 [![NPM Downloads](https://img.shields.io/npm/dm/battletest.svg?style=flat)](https://npmcharts.com/compare/battletest?minimal=true)
+[![NPM Version](http://img.shields.io/npm/v/battletest.svg?style=flat)](https://www.npmjs.org/package/battletest)
 [![Install Size](https://packagephobia.now.sh/badge?p=battletest)](https://packagephobia.now.sh/result?p=battletest)
 
 Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
 
 ## Why Use Battletest.js?
 
-Modern web APIs must be built to handle requests with any data type, including invalid ones.  __*For instance, if a client sends a request with an extremely long string or -1 in the "stock_ticker" field that should only contain a short string, will the server fail?*__ 
+Modern web APIs must be built to handle requests with any data type, including invalid ones.  __*For instance, if a client sends a request with an extremely long string or -1 in the "ticker" field that should only contain a short string, will the server process fail?*__ 
 
-Battletest.js will take in the shape of the intended request object, and generate many test requests that vary each field of the request object by a single unexpected value.  By testing the backend as such, the developer can easily determine if there are any requests that might cause unexpected backend failure.
+Battletest.js will take in the shape of the intended request object, and generate many test requests that vary each field of the request object by a single unexpected value.  By testing the backend as such, the developer can easily determine if there are any random test requests that might make the web API backend fail. 
 
 #### Built for Express.js & OpenAPI v3.03
 Battletest will read a configuration file (`battletest.config.js`) containing the shape of the expected HTTP request for each endpoint/method, and output for each endpoint/method a testing suite that leverages [Mocha](https://github.com/mochajs/mocha), [Chai](https://github.com/chaijs/chai) & [Supertest](https://github.com/visionmedia/supertest) to test how the server handles requests containing unexpected data types.
@@ -30,6 +32,8 @@ Battletest can also parse a [express-js](https://github.com/expressjs/express) s
 - [How the Test Data is Generated](#how-the-test-data-is-generated)
 - [Contributing](#contributing)
 - [Credits](#credits)
+- [License](#license)
+
 
 # Installation
 
@@ -79,7 +83,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
                   }
         ]
         ```
-    * __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys. Currently we only support `application/json` and `application/xml`.
+    * __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys.  Content type`application/json` 
         ```js
         requestBody: {
           "application/json": {
@@ -95,7 +99,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
               }
             }
           },
-          "text/html": { // not currently supported
+          "text/html": {
             schema: {
               type: "string"
             }
@@ -271,7 +275,16 @@ $ battletest generate
 $ battletest generate <endpoint-name>
 ```
 
-This will parse the newly created `battletest.config.js` and generate test files under `__battletest__` in your project's directory.  To only generate tests for a particular endpoint, pass in the endpoint name as an argument.
+This will parse the newly created `battletest.config.js` and generate test files under `__battletest__` in your project's directory.  To only generate tests for a particular endpoint, pass in the endpoint name as an argument. 
+
+Sample test cases are as below:
+
+* Request where body.post_password is "undefined".
+  ![](documentation/images/sample-test3.png)
+* Request where body.post_password is "null".
+  ![](documentation/images/sample-test2.png)
+* Request where body.post_password is "false".
+  ![](documentation/images/sample-test.png)
 
 For sample test files, please see [here](documentation/examples).
 
