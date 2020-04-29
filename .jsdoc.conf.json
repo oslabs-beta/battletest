@@ -4,11 +4,10 @@
    },
    "source": {
      "include": [
-       "bin"
+       "lib"
      ],
      "exclude": [
        ".git",
-       ".meteor",
        "node_modules"
      ],
      "includePattern": ".+\\.js(x|doc)?$"

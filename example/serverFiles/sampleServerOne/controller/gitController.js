@@ -3,8 +3,8 @@ const fetch = require('node-fetch');
 
 
 // gitHub app authorization 
-const client_id = 'b0d490755cdeeb3ee807';
-const client_secret = '4428248231e3640b286bc56c9347aee336173d56';
+const client_id = 'x';
+const client_secret = 'x';
 
 gitController = {};
 

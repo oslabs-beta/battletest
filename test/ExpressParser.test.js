@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
-const ExpressParser = require('../bin/src/init/expressParser.js');
+const ExpressParser = require('../lib/init/expressParser.js');
+
 const app = require('../example/serverFiles/sampleServerOne/server.js');
 const expectedExResult = require('./sample_files/expressParserResult.js')
 

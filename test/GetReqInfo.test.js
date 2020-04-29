@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const GetReqInfo = require('../bin/src/init/expressParserMethods/getReqInfo.js');
+const GetReqInfo = require('../lib/init/expressParserMethods/getReqInfo.js');
 const routeInfo = require('./sample_files/routeInfoTest.js');
 const expectedReqInfo = require('./sample_files/reqInfoResultTest.js');
 

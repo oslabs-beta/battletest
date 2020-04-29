@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const GetParameters = require('../bin/src/init/expressParserMethods/getParameters.js');
+const GetParameters = require('../lib/init/expressParserMethods/getParameters.js');
 
 
 describe('GetParameters', () => {
