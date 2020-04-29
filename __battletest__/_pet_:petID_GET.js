@@ -14,7 +14,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -68,7 +68,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/3').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -176,7 +176,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -203,7 +203,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -230,7 +230,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -257,7 +257,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
@@ -284,7 +284,7 @@ describe('/pet/:petID_GET', function() {
         const startTime = Date.now();
         
   request(serverURL)
-    .get('/pet/7').set('Cookie', ["lastVisitedDate=undefined"]).send()
+    .get('/pet/9').set('Cookie', ["lastVisitedDate=undefined"]).send()
     .expect(400)
     .end((err, res) => {
         endTime = Date.now();
