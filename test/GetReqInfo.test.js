@@ -7,7 +7,6 @@ describe('GetReqInfo', () => {
   const result = GetReqInfo(routeInfo);
 
   it('should return an object', () => {
-
     expect(result).to.be.an('object');
   });
 

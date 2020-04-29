@@ -16,7 +16,6 @@ describe('GetParameters', () => {
 
   it('should have properties named parameters and reqBodyProp', () => {
     const result = GetParameters(arr);
-    console.log(result)
     expect(result).to.have.keys(['parameters', 'reqBodyProp']);
   });
 
@@ -25,7 +24,6 @@ describe('GetParameters', () => {
     const {
       parameters
     } = result;
-    console.log(parameters)
     expect(parameters).to.be.an('array');
 
   });
