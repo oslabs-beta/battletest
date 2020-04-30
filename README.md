@@ -5,6 +5,7 @@
   <img src="https://img.shields.io/badge/release-1.0.0-green">
   <img src="https://packagephobia.now.sh/badge?p=battletest">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
+  <img src="https://img.shields.io/badge/License-GPLv3-blue.svg">
 </p>
 <p align="center">
 A tool for autogenerating Node.js endpoint tests<br/>
