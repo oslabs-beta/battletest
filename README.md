@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev">
   <img src="https://img.shields.io/badge/release-1.0.0-green">
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
   <img src="https://img.shields.io/github/repo-size/oslabs-beta/battletest?color=yellow">
+  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
 </p>
 
 Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
