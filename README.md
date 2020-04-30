@@ -9,7 +9,7 @@
 <p align="center">
 
 A tool for autogenerating Node.js endpoint tests with random data for comprehensive endpoint testing. <br/>
-:sunglasses: Easier testing, happier devs :sunglasses:
+Easier testing, happier devs :sunglasses:
 </p>
 
 # Battletest-js
@@ -32,7 +32,7 @@ Battletest can also parse a [express-js](https://github.com/expressjs/express) s
 * [Getting Started](#getting-started)
   + [Initialize `battletest.config.js` ](#initialize-battletest.config.js)
     - [Specifying Data Types](#Specifying-Data-Types)
-    - [Sample `battletest.config.js` ](#Sample- `battletest.config.js` )
+    - [Sample `battletest.config.js`](#Sample-`battletest.config.js` )
     - [Using an OpenAPI Document](#Using-an-OpenAPI-Document)
     - [Using an Express-js server file](#Using-Express-js-server-file)
   + [Generating test files](#generate-test-files)
