@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev">
   <img src="https://img.shields.io/badge/release-1.0.0-green">
-  <img src="https://img.shields.io/github/repo-size/oslabs-beta/battletest?color=yellow">
+  <img src="https://packagephobia.now.sh/badge?p=battletest">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
 </p>
 <p align="center">
@@ -100,7 +100,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
         ]
 ```
 
-    - __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys.  Content type `application/json` 
+  - __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys.  Only content-type "application-json" is currently supported.
 
         
 
