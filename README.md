@@ -3,7 +3,6 @@
 <p align="center">
   <img src="https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev">
   <img src="https://img.shields.io/badge/release-1.0.0-green">
-  <img src="https://packagephobia.now.sh/badge?p=battletest">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
   <img src="https://img.shields.io/badge/License-GPLv3-blue.svg">
 </p>
