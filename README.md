@@ -1,8 +1,10 @@
-<center><img src="documentation/images/logo.jpeg" width="200"></img></center>
+<div align="center"><img src="documentation/images/logo.jpeg" width="400"></img></div>
 
+<div align="center">
 [![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
 [![NPM Downloads](https://img.shields.io/npm/dm/battletest.svg?style=flat)](https://npmcharts.com/compare/battletest?minimal=true)
 [![Install Size](https://packagephobia.now.sh/badge?p=battletest)](https://packagephobia.now.sh/result?p=battletest)
+</div>
 
 Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
 
