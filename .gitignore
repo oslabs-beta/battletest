@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+out
+.eslintrc.json
+battletest.log
+doc
+.vscode
+.DS_Store

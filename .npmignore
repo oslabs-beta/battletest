@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+out
+.eslintrc.json
+battletest.log
+.jsdoc.conf.json
+lib/start
+.travis.yml
+.gitignore
+test
+.vscode
+.DS_Store
