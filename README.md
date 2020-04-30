@@ -4,7 +4,6 @@
   <img src="https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev">
   <img src="https://img.shields.io/badge/release-1.0.0-orange">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
-  <img src="https://img.shields.io/npm/dm/battletest.svg?style=flat">
   <img src="https://img.shields.io/github/repo-size/oslabs-beta/battletest?color=orange">
 </p>
 
