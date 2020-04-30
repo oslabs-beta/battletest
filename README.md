@@ -6,8 +6,13 @@
   <img src="https://img.shields.io/github/repo-size/oslabs-beta/battletest?color=yellow">
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
 </p>
+<p align="center">
 
-Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
+A tool for autogenerating Node.js endpoint tests with random data for comprehensive endpoint testing. <br/>
+:sunglasses: Easier testing, happier devs :sunglasses:
+</p>
+
+# Battletest-js
 
 ## Why Use Battletest?
 
@@ -15,13 +20,13 @@ Modern web APIs must be built to handle requests with any data type, including i
 
 Battletest.js will take in the shape of the intended request object, and generate many test requests that vary each field of the request object by a single unexpected value.  By testing the backend as such, the developer can easily determine if there are any random test requests that might make the web API backend fail. 
 
-#### Built for Express.js & OpenAPI v3.03
+### Built for Express.js & OpenAPI v3.03 :heart:
 
 Battletest will read a configuration file ( `battletest.config.js` ) containing the shape of the expected HTTP request for each endpoint/method, and output for each endpoint/method a testing suite that leverages [Mocha](https://github.com/mochajs/mocha), [Chai](https://github.com/chaijs/chai) & [Supertest](https://github.com/visionmedia/supertest) to test how the server handles requests containing unexpected data types.
 
 Battletest can also parse a [express-js](https://github.com/expressjs/express) server file or a [OpenAPI v3.03](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md) document to prepopulate most (express-js server file) or all (OpenAPI document) of `battletest.config.js` .
 
-## Content
+## Table of Content
 
 * [Installation](#Installation)
 * [Getting Started](#getting-started)
@@ -35,6 +40,7 @@ Battletest can also parse a [express-js](https://github.com/expressjs/express) s
   + [Viewing test results](#view-test-results)
 * [How the Test Data is Generated](#how-the-test-data-is-generated)
 * [Contributing](#contributing)
+* [Testing](#testing)
 * [Credits](#credits)
 
 # Installation
@@ -127,7 +133,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
         }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#battletest-js)
 
 ## Specifying Data Types
 
@@ -401,6 +407,11 @@ For instance, invalid data to be tested for a __number__ field includes, among o
 * random string
 
 For details on how the random test data is generated, please see the relevant code [here](lib/generate/genRandom).
+
+[↥Back to top](#battletestjs)
+
+# Testing
+We use [Travis-CI](http://travis-ci.com/) to run our testing suites. In a local machine, please use `npm run test` to execute the testing suite. 
 
 [↥Back to top](#battletestjs)
 
