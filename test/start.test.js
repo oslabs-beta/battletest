@@ -34,7 +34,7 @@ describe('Integration tests for start', () => {
     it('should run test files in __battletest__', () => {
       expect(() => start()).to.not.throw();
     });
-    xit('should output correct json files out in __battletest__/__result__', () => {
+    it('should output correct json files out in __battletest__/__result__', () => {
       expect(fs.existsSync('__battletest__/__result__/_getMessages_get.json')).to.equal(true);
       expect(fs.existsSync('__battletest__/__result__/_postMessage_post.json')).to.equal(true);
       expect(fs.existsSync('__battletest__/__result__/_deleteMessage_delete.json')).to.equal(true);
