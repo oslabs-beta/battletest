@@ -1,6 +1,6 @@
-<center><img src="documentation/images/logo.jpeg"></img></center>
+<center><img src="documentation/images/logo.jpeg" width="200"></img></center>
 
-<center>[![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
+[![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
 [![NPM Downloads](https://img.shields.io/npm/dm/battletest.svg?style=flat)](https://npmcharts.com/compare/battletest?minimal=true)
 [![Install Size](https://packagephobia.now.sh/badge?p=battletest)](https://packagephobia.now.sh/result?p=battletest)
 
