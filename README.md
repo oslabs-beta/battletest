@@ -7,12 +7,9 @@
   <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
 </p>
 <p align="center">
-
-A tool for autogenerating Node.js endpoint tests with random data for comprehensive endpoint testing. <br/>
+A tool for autogenerating Node.js endpoint tests<br/>
 Easier testing, happier devs :sunglasses:
 </p>
-
-# Battletest-js
 
 ## Why Use Battletest?
 
@@ -133,7 +130,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
         }
 ```
 
-[↥Back to top](#battletest-js)
+[↥Back to top](#why-use-battletest)
 
 ## Specifying Data Types
 
@@ -205,7 +202,7 @@ Possible data types include "array", "object", "integer", "number" and "string".
     }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ## Sample `battletest.config.js` 
 
@@ -241,7 +238,7 @@ module.exports = {
 
 For more sample `battletest.config.js` files, please see [here](documentation/examples).
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ### Using Express-js server file 
 
@@ -289,7 +286,7 @@ module.exports = {
 }
 
 ``` 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ### Using an OpenAPI Document 
 
@@ -336,7 +333,7 @@ module.exports = {
   }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ## Generate Test Files
 
@@ -408,21 +405,21 @@ For instance, invalid data to be tested for a __number__ field includes, among o
 
 For details on how the random test data is generated, please see the relevant code [here](lib/generate/genRandom).
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 # Testing
 We use [Travis-CI](http://travis-ci.com/) to run our testing suites. In a local machine, please use `npm run test` to execute the testing suite. 
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 # Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. For an overview diagram for the codebase, please see [here](documentation/images/battletest-uml.png).  For full API documentation, please see [here](documentation/index.html)
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 # Credits
 
 Binta Kinteh [@BintaKinteh](https://github.com/BintaKinteh) | Duygu Yigitsoy [@dyigitsoy](https://github.com/dyigitsoy) | Kevin Luo [@LuoKevin](https://github.com/LuoKevin) | Soobin Kim [@soobinkim1](https://github.com/soobinkim1) | Yula Ko [@yulako](https://github.com/yulako)
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
