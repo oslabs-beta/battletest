@@ -1,6 +1,6 @@
 {
   "name": "battletest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Backend testing generator",
   "bin": {
     "battletest": "./lib/cli/cli.js"
