@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: generate/genCode/generateSingleTest.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: generate/genCode/generateSingleTest.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @name src/generate/generateSingleTest
+ * @description The upper level function "generateSingleTest" calls "buildSupertest", which in turn calls other functions contained in this section, that each provide a particular section of a single testing block.
+ */
+const resolvePath = (path, scenario) => {
+  if (!scenario.path) {
+    return path;
+  }
+  // ex. "/pet/:petID" should incorporate the actual test value, e.g., "/pet/3"
+  Object.keys(scenario.path).forEach((prop) => {
+    const regex = new RegExp(`(:${prop})`);
+    path = path.replace(regex, scenario.path[prop]);
+
+    const regex2 = new RegExp(`{prop}`);
+    path = path.replace(regex2, scenario.path[prop]);
+  });
+  return path;
+};
+
+const resolveHeader = (scenario) => {
+  if (!scenario.header) {
+    return '';
+  }
+  const headers = {};
+  Object.keys(scenario.header).forEach((prop) => {
+    headers[prop] = scenario.header.prop;
+  });
+  return `.set(${JSON.stringify(headers)})`;
+};
+
+const resolveCookie = (scenario) => {
+  if (!scenario.cookie) {
+    return '';
+  }
+  const cookies = [];
+  Object.keys(scenario.cookie).forEach((prop) => {
+    cookies.push(`${prop}=${scenario.cookie.prop}`);
+  });
+  return `.set('Cookie', ${JSON.stringify(cookies)})`;
+};
+
+const resolveQuery = (scenario) => {
+  if (!scenario.query) {
+    return '';
+  }
+  let code = '';
+  Object.keys(scenario.query).forEach((key) => {
+    code += `\n.query({ ${key} : ${scenario.query.key} })`;
+  });
+  return code;
+};
+
+const resolveRequestBody = (scenario) => {
+  if (!scenario.requestBody) {
+    return '.send()';
+  }
+  const contentType = Object.keys(scenario.requestBody)[0];
+  return `\n    .type('${contentType}')\n    .send(${JSON.stringify(scenario.requestBody[contentType].body)})`;
+};
+
+const buildSupertest = (path, operation, scenario) => {
+  const code = `
+  request(serverURL)
+    .${operation.toLowerCase()}('${resolvePath(
+  path,
+  scenario,
+)}')${resolveHeader(scenario)}${resolveQuery(scenario)}${resolveCookie(
+  scenario,
+)}${resolveRequestBody(scenario)}`;
+  return code;
+};
+
+const generateSingleTest = (path, operation, scenario, testname) => `
+    it('${testname}', function(done){
+        let endTime;
+        const startTime = Date.now();
+        ${buildSupertest(path, operation, scenario)}
+    .expect(400)
+    .end((err, res) => {
+        endTime = Date.now();
+        const resultData =  {
+          request: {
+            body: res.request._data,
+            query: res.request._query,
+          },
+          response: {
+            status: res.status,
+            body: res.body,
+          },
+          timer: endTime - startTime
+        }
+      result[this.test.fullTitle()] = resultData;
+
+      /* Custom assertions can be inserted here */
+
+      done(err);
+  });
+})`;
+
+module.exports = generateSingleTest;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="GenArray.html">GenArray</a></li><li><a href="GenBoolean.html">GenBoolean</a></li><li><a href="GenNumber.html">GenNumber</a></li><li><a href="GenString.html">GenString</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BattleReporter">BattleReporter</a></li><li><a href="global.html#bin/cmds/generate">bin/cmds/generate</a></li><li><a href="global.html#bin/cmds/init">bin/cmds/init</a></li><li><a href="global.html#bin/cmds/start">bin/cmds/start</a></li><li><a href="global.html#bin/src/generate/generateDescribe">bin/src/generate/generateDescribe</a></li><li><a href="global.html#bin/src/util/ceckFiles">bin/src/util/ceckFiles</a></li><li><a href="global.html#buildBody">buildBody</a></li><li><a href="global.html#defaultTestValues">defaultTestValues</a></li><li><a href="global.html#directoryPath">directoryPath</a></li><li><a href="global.html#dirPath">dirPath</a></li><li><a href="global.html#extractBody">extractBody</a></li><li><a href="global.html#extractRoute">extractRoute</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#generateTestFile">generateTestFile</a></li><li><a href="global.html#help">help</a></li><li><a href="global.html#openAPIParser">openAPIParser</a></li><li><a href="global.html#parameters">parameters</a></li><li><a href="global.html#requestBody">requestBody</a></li><li><a href="global.html#src/generate/generateSingleTest">src/generate/generateSingleTest</a></li><li><a href="global.html#src/generate/generateTestSetup">src/generate/generateTestSetup</a></li><li><a href="global.html#validateBody">validateBody</a></li><li><a href="global.html#validateConfig">validateConfig</a></li><li><a href="global.html#validateParam">validateParam</a></li><li><a href="global.html#validateRoute">validateRoute</a></li><li><a href="global.html#validateSchema">validateSchema</a></li><li><a href="global.html#writeLog">writeLog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Apr 29 2020 11:36:48 GMT-0400 (Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
