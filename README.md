@@ -1,12 +1,12 @@
-# Battletest.js
+<center><img src="documentation/images/logo.jpeg"></img></center>
 
-[![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
+<center>[![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
 [![NPM Downloads](https://img.shields.io/npm/dm/battletest.svg?style=flat)](https://npmcharts.com/compare/battletest?minimal=true)
 [![Install Size](https://packagephobia.now.sh/badge?p=battletest)](https://packagephobia.now.sh/result?p=battletest)
 
 Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
 
-## Why Use Battletest.js?
+## Why Use Battletest?
 
 Modern web APIs must be built to handle requests with any data type, including invalid ones.  __*For instance, if a client sends a request with an extremely long string or -1 in the "ticker" field that should only contain a short string, will the server process fail?*__ 
 
