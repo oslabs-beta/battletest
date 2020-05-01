@@ -1,10 +1,15 @@
-<center><img src="documentation/images/logo.jpeg"></img></center>
+<div align="center"><img src="documentation/images/logo.jpeg" width="400"></img></div>
 
-<center>[![Build Status](https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev)](https://travis-ci.com/oslabs-beta/battletest)
-[![NPM Downloads](https://img.shields.io/npm/dm/battletest.svg?style=flat)](https://npmcharts.com/compare/battletest?minimal=true)
-[![Install Size](https://packagephobia.now.sh/badge?p=battletest)](https://packagephobia.now.sh/result?p=battletest)
-
-Command-line tool for auto-generating Node.js endpoint test suites with random data for comprehensive endpoint testing.  Faster test writing, happier developers :sunglasses:
+<p align="center">
+  <img src="https://travis-ci.com/oslabs-beta/battletest.svg?branch=dev">
+  <img src="https://img.shields.io/badge/release-1.0.0-green">
+  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&color=navy">
+  <img src="https://img.shields.io/badge/License-GPLv3-blue.svg">
+</p>
+<p align="center">
+A tool for autogenerating Node.js endpoint tests<br/>
+Easier testing, happier devs :sunglasses:
+</p>
 
 ## Why Use Battletest?
 
@@ -12,19 +17,19 @@ Modern web APIs must be built to handle requests with any data type, including i
 
 Battletest.js will take in the shape of the intended request object, and generate many test requests that vary each field of the request object by a single unexpected value.  By testing the backend as such, the developer can easily determine if there are any random test requests that might make the web API backend fail. 
 
-#### Built for Express.js & OpenAPI v3.03
+### Built for Express.js & OpenAPI v3.03 :heart:
 
 Battletest will read a configuration file ( `battletest.config.js` ) containing the shape of the expected HTTP request for each endpoint/method, and output for each endpoint/method a testing suite that leverages [Mocha](https://github.com/mochajs/mocha), [Chai](https://github.com/chaijs/chai) & [Supertest](https://github.com/visionmedia/supertest) to test how the server handles requests containing unexpected data types.
 
 Battletest can also parse a [express-js](https://github.com/expressjs/express) server file or a [OpenAPI v3.03](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md) document to prepopulate most (express-js server file) or all (OpenAPI document) of `battletest.config.js` .
 
-## Content
+## Table of Content
 
 * [Installation](#Installation)
 * [Getting Started](#getting-started)
   + [Initialize `battletest.config.js` ](#initialize-battletest.config.js)
     - [Specifying Data Types](#Specifying-Data-Types)
-    - [Sample `battletest.config.js` ](#Sample- `battletest.config.js` )
+    - [Sample `battletest.config.js`](#Sample-`battletest.config.js` )
     - [Using an OpenAPI Document](#Using-an-OpenAPI-Document)
     - [Using an Express-js server file](#Using-Express-js-server-file)
   + [Generating test files](#generate-test-files)
@@ -32,6 +37,7 @@ Battletest can also parse a [express-js](https://github.com/expressjs/express) s
   + [Viewing test results](#view-test-results)
 * [How the Test Data is Generated](#how-the-test-data-is-generated)
 * [Contributing](#contributing)
+* [Testing](#testing)
 * [Credits](#credits)
 
 # Installation
@@ -91,7 +97,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
         ]
 ```
 
-    - __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys.  Content type `application/json` 
+  - __RequestBody__: Object describing the body of a single request. It may have multiple Content-Types as keys.  Only content-type "application-json" is currently supported.
 
         
 
@@ -124,7 +130,7 @@ Battletest can optionally parse either an Express-js server.js file or OpenAPI s
         }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ## Specifying Data Types
 
@@ -196,7 +202,7 @@ Possible data types include "array", "object", "integer", "number" and "string".
     }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ## Sample `battletest.config.js` 
 
@@ -232,7 +238,7 @@ module.exports = {
 
 For more sample `battletest.config.js` files, please see [here](documentation/examples).
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ### Using Express-js server file 
 
@@ -280,7 +286,7 @@ module.exports = {
 }
 
 ``` 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ### Using an OpenAPI Document 
 
@@ -327,7 +333,7 @@ module.exports = {
   }
 ```
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 ## Generate Test Files
 
@@ -399,16 +405,21 @@ For instance, invalid data to be tested for a __number__ field includes, among o
 
 For details on how the random test data is generated, please see the relevant code [here](lib/generate/genRandom).
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
+
+# Testing
+We use [Travis-CI](http://travis-ci.com/) to run our testing suites. In a local machine, please use `npm run test` to execute the testing suite. 
+
+[↥Back to top](#why-use-battletest)
 
 # Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. For an overview diagram for the codebase, please see [here](documentation/images/battletest-uml.png).  For full API documentation, please see [here](documentation/index.html)
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)
 
 # Credits
 
 Binta Kinteh [@BintaKinteh](https://github.com/BintaKinteh) | Duygu Yigitsoy [@dyigitsoy](https://github.com/dyigitsoy) | Kevin Luo [@LuoKevin](https://github.com/LuoKevin) | Soobin Kim [@soobinkim1](https://github.com/soobinkim1) | Yula Ko [@yulako](https://github.com/yulako)
 
-[↥Back to top](#battletestjs)
+[↥Back to top](#why-use-battletest)

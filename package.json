@@ -2,6 +2,7 @@
   "name": "battletest",
   "version": "1.0.0",
   "description": "Backend testing generator",
+  "license": "GPL-3.0",
   "bin": {
     "battletest": "./lib/cli/cli.js"
   },
