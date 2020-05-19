@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const GenString = require('../lib/generate/genRandom/GenString.js');
 
-xdescribe('GenString', () => {
+describe('GenString', () => {
   let instance;
   before(() => {
     instance = new GenString();

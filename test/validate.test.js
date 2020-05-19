@@ -4,7 +4,6 @@ const validateConfig = require('../lib/generate/validateConfig.js');
 const config = require('./resources/configs/testConfig.js');
 
 const { expect } = chai;
-// console.log(validateConfig(config));
 describe('validateConfig.js', () => {
   describe('top-level validation', () => {
     it('show an error if parameters holds an invalid type', () => {
